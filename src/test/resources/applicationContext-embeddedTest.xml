@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+
+	<import resource="message-server.xml" />
+	<import resource="routers.xml" />
+	<import resource="producers.xml" />
+	<import resource="event.xml" />
+	<import resource="webTestsConfig.xml" />
+	<import resource="jdbm3.xml" />
+	<import resource="replication-server.xml" />
+	<import resource="predicates.xml" />
+
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory"
+		p:userName="system" p:password="manager">
+		<property name="brokerURL"
+			value="vm://localhost?broker.persistent=false&amp;broker.useShutdownHook=false" />
+	</bean>
+
+</beans>

@@ -1,0 +1,23 @@
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" environment="ibm_REP_connector.ibm_RepCondb" xsi:noNamespaceSchemaLocation="http://dhtnas01:8000/RepraWebApp/dtds/dbeventstream.xsd">
+  <dbEvent eventId="102:000000085df5e2010219a0ff00010219a0fe00060000a0e800abed8e0000000000020001">
+    <insert schema="SUBSCRIPTION_EQUIPMENT_INFO">
+      <values>
+        <cell name="SUBSCR_ID" type="NUMERIC">101857</cell>
+        <cell name="IMSI_NUMBER_ID" type="NUMERIC">121231234</cell>
+        <cell name="IMSI_STATUS_ID" type="CHAR"> </cell>
+        <cell name="SIMCARD_TYPE_ID" type="CHAR">USIM  </cell>
+        <cell name="VALID_FROM_DATE" type="DATETIME">20121012 15:27:35:440</cell>
+        <cell name="VALID_TO_DATE" type="DATETIME">NULL</cell>
+        <cell name="PKI_STATUS_ID" type="CHAR">NULL</cell>
+        <cell name="INFO_REG_DATE" type="DATETIME">20121012 15:27:35:440</cell>
+        <cell name="INFO_REG_APPL_NAME" type="VARCHAR">Aqua</cell>
+        <cell name="INFO_REG_USER_NAME" type="VARCHAR">t703413</cell>
+        <cell name="INFO_CHG_DATE" type="DATETIME">20121012 15:27:35:440</cell>
+        <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        <cell name="ICC_ID" type="NUMERIC">NULL</cell>
+      </values>
+    </insert>
+  </dbEvent>
+</dbStream>

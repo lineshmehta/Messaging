@@ -1,0 +1,65 @@
+ext.JAXWS_TOOLS = 'com.sun.xml.ws:jaxws-tools:2.1.4'
+ext.JAXB2_BASICS = 'org.jvnet.jaxb2_commons:jaxb2-basics:0.6.0'
+
+File.metaClass.makeEmptyDir = {->
+    ant.delete(dir: absolutePath, failonerror: false)
+    mkdirs()
+}   
+
+
+task wsWrapperGenJaxWs {
+    ext.namespaceMappings = [:]
+    ext.typeMappingVersion = "1.1"
+    ext.noWrapped = false
+    ext.enableJaxws = true
+    ext.outputDir = file("$buildDir.absolutePath/src.wsWrapperGen/java") 
+}
+
+afterEvaluate {theProject ->
+    ext.wsdlDir = file('src/test/wsdl')
+    ext.wsdlFiles = fileTree(dir: wsdlDir, include: "*.wsdl")
+    
+	configurations {
+		wsWrapperJaxWsGenLibs
+	}
+	
+	dependencies {
+		wsWrapperJaxWsGenLibs JAXWS_TOOLS, JAXB2_BASICS
+        testCompile JAXWS_TOOLS, JAXB2_BASICS
+	}
+	
+	wsWrapperGenJaxWs{            
+	    if (wsWrapperGenJaxWs.enableJaxws && wsdlDir.exists() && !wsdlFiles.empty) {        
+        	inputs.files wsdlFiles, configurations.wsWrapperJaxWsGenLibs
+        	outputs.dir outputDir
+        
+        	logging.captureStandardOutput LogLevel.INFO
+        	doLast {
+        	    outputDir.makeEmptyDir()   
+        		ant {
+        			taskdef(name: "wsimport",
+        					classpath: configurations.wsWrapperJaxWsGenLibs.asPath,
+        					classname: "com.sun.tools.ws.ant.WsImport")
+        
+        			for (wsdlFile in wsdlFiles) {
+        				print "Running wsimport for $wsdlFile"
+        				wsimport(
+        					wsdl: wsdlFile.path,
+        					wsdllocation: wsdlFile.name,
+        					destdir: outputDir,
+        					xnocompile: true,
+        					target: 2.1,
+        					keep: true,
+        					extension: true){
+        					xjcarg(value:"-Xequals")
+        					xjcarg(value:"-XhashCode")
+        					xjcarg(value:"-XtoString")
+        				}
+        			}
+        		}
+        	}
+	    }
+	}
+	
+	compileJava.dependsOn wsWrapperGenJaxWs
+}

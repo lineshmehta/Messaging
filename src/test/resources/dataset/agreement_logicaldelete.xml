@@ -1,0 +1,30 @@
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://dhttm12:8000/RepraWebApp/dtds/dbeventstream.xsd" environment="REP_connector.RepCondb">
+  <dbEvent eventId="190:00000008e6094d4d0215ee3d00140215ee3d00100000a09400e8add00000000000010003">
+    <update schema="AGREEMENT_NEW">
+      <values>
+        <cell name="INFO_IS_DELETED" type="CHAR">Y</cell>
+      </values>
+      <oldValues>
+        <cell name="AGREEMENT_ID" type="NUMERIC">4274399</cell>
+        <cell name="CUST_UNIT_NUMBER" type="INT">92521631</cell>
+        <cell name="AGR_ID" type="CHAR">NULL</cell>
+        <cell name="AGR_TYPE_ID" type="CHAR">GA</cell>
+        <cell name="AGR_NAME" type="VARCHAR">NULL</cell>
+        <cell name="STATUS_ID" type="CHAR">NULL</cell>
+        <cell name="VALID_FROM_DATE" type="DATETIME">20120720 14:07:09:440</cell>
+        <cell name="VALID_TO_DATE" type="DATETIME">NULL</cell>
+        <cell name="INFO_REG_DATE" type="DATETIME">20120720 14:07:09:616</cell>
+        <cell name="INFO_REG_APPLICATION_ID" type="SMALLINT">61</cell>
+        <cell name="INFO_REG_USER_NAME" type="VARCHAR">tn_29700</cell>
+        <cell name="INFO_CHG_DATE" type="DATETIME">NULL</cell>
+        <cell name="INFO_CHG_APPLICATION_ID" type="SMALLINT">NULL</cell>
+        <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        <cell name="COMMENT" type="VARCHAR">NULL</cell>
+        <cell name="DIRECTORY_NUMBER_ID" type="NUMERIC">NULL</cell>
+        <cell name="PRODUCT_OFFER_CATEGORY_ID" type="NUMERIC">NULL</cell>
+        <cell name="INFO_TIMESTAMP" type="VARBINARY">0x00080000e6094d4f</cell>
+      </oldValues>
+    </update>
+  </dbEvent>
+</dbStream>

@@ -1,0 +1,1 @@
+ext.coverageExclude = "**/*Test.class"

@@ -1,0 +1,74 @@
+ext.springVersion = '3.1.2.RELEASE'
+ext.slf4jVersion = "1.6.6"
+ext.logbackVersion = "1.0.6"
+ext.camelVersion="2.10.0"
+ext.activemqVersion="5.7.0"
+ext.mqVersion="7.0.1.3"
+
+ext.SPRING=["org.springframework:spring-core:${springVersion}",
+        "org.springframework:spring-context:${springVersion}",
+        "org.springframework:spring-web:${springVersion}",
+        "org.springframework:spring-webmvc:${springVersion}",
+        "org.springframework:spring-jms:${springVersion}"]
+
+ext.LOGBACK=["ch.qos.logback:logback-classic:$logbackVersion",
+        "ch.qos.logback:logback-core:$logbackVersion",
+        "org.slf4j:slf4j-api:$slf4jVersion"]
+
+ext.JAVAMELODY =["net.bull.javamelody:javamelody-core:1.32.0","org.jrobin:jrobin:1.5.9.1","com.telenor.cos:common-monitoring:$commonVersion@jar"]
+
+ext.GROOVY=["org.codehaus.groovy:groovy:1.8.7"]
+
+ext.APACHECAMEL =["org.apache.camel:camel-core:$camelVersion",
+              "org.apache.camel:camel-spring:$camelVersion",
+              "org.apache.camel:camel-xstream:$camelVersion"]
+
+ext.ACTIVEMQ =["org.apache.activemq:activemq-camel:$activemqVersion",
+           "org.apache.activemq:activemq-core:$activemqVersion"]
+
+ext.MQ = ["ibm:com.ibm.mq:$mqVersion",
+      "ibm:com.ibm.mqjms:$mqVersion",
+      "ibm:com.ibm.mq.jmqi:$mqVersion",
+      "ibm:dhbcore:$mqVersion"]
+
+dependencies {
+
+        compile APACHECAMEL
+        compile ACTIVEMQ
+        compile SPRING
+        compile MQ
+        compile LOGBACK
+
+        compile 'net.kotek.jdbm3:jdbm:3.0-alpha3@jar'
+        compile 'commons-collections:commons-collections:3.2.1'
+        compile 'joda-time:joda-time:2.0'
+        compile 'com.sun.xml.security:apache-xmlsec:1.0.1'
+        compile "com.telenor.cos:cosmash:${commonVersion}@jar"
+        compile 'net.sf.opencsv:opencsv:2.3'
+        compile 'commons-lang:commons-lang:2.6'
+        compile 'commons-io:commons-io:1.4'
+        compile 'commons-daemon:commons-daemon:1.0.5'
+        compile 'jstl:jstl:1.2'
+        compile 'com.google.guava:guava:13.0'
+
+        compile group: 'org.apache.xbean', name: 'xbean-spring', version: '3.4.3'
+
+        providedCompile 'javax.servlet:servlet-api:2.5'
+
+        testCompile "org.springframework:spring-test:${springVersion}"
+        testCompile 'junit:junit:4.10'
+        testCompile 'org.easymock:easymock:3.0'
+        testCompile 'org.powermock:powermock-module-junit4:1.4.10'
+        testCompile 'org.powermock:powermock-api-easymock:1.4.10'
+        testCompile 'nl.jqno.equalsverifier:equalsverifier:1.0.2'
+        testCompile "org.mockito:mockito-all:1.8.5"
+        testCompile 'javax.servlet:servlet-api:2.5'  // not included in war-file
+        testCompile group: 'org.apache.camel', name: 'camel-test-spring', version: "${camelVersion}"
+        testCompile group: 'org.apache.activemq', name: 'activemq-camel', version: "${activemqVersion}"
+        testCompile group: 'net.sf.josql', name: 'josql', version: '1.5'
+        testCompile group: 'net.sf.josql', name: 'gentlyweb-utils', version: '1.5'
+
+        runtime JAVAMELODY
+        runtime GROOVY
+
+}

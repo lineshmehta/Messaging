@@ -1,0 +1,72 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.telenor.cos.samlstub"/>
+    <context:property-placeholder location="classpath:webservices.properties" ignore-unresolvable="true" system-properties-mode="OVERRIDE"/>
+    
+    <bean id="repServer" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" primary="true">
+        <property name="serviceInterface" value="com.telenor.cos.stub.service.MessageTestProducerEndPointWS"/>
+        <property name="wsdlDocumentUrl" value="classpath:repserver.wsdl"/>
+        <property name="namespaceUri" value="http://service.stub.cos.telenor.com/"/>
+        <property name="serviceName" value="MessageTestProducerEndPointWSService"/>
+        <property name="portName" value="MessageTestProducerEndPointWSPort"/>
+        <property name="endpointAddress" value="${endpoint.repserver.url}"/>
+    </bean>
+    
+    <bean class="com.telenor.cos.samlstub.SoapHandlerResolverStub" name="soapHandlerResolverStub"/>
+    
+    <bean id="subscriptionSearchService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" primary="true">
+        <property name="serviceInterface" value="com.telenor.cosread.service.search.SubscriptionSearchServiceEndpoint"/>
+        <property name="wsdlDocumentUrl" value="classpath:cosreadSubscrSearch.wsdl"/>
+        <property name="namespaceUri" value="http://search.service.cosread.telenor.com/"/>
+        <property name="serviceName" value="SubscriptionSearchServiceEndpointService"/>
+        <property name="portName" value="SubscriptionSearchServiceEndpointPort"/>
+        <property name="endpointAddress" value="${endpoint.cosreadsearch.url}"/>
+        <property name="handlerResolver" ref="soapHandlerResolverStub"/>
+    </bean>
+    
+    <bean id="graphResourceReadService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" primary="true">
+        <property name="serviceInterface" value="com.telenor.cos.graph.service.ResourceReadServiceImpl"/>
+        <property name="wsdlDocumentUrl" value="classpath:graphResourceRead.wsdl"/>
+        <property name="namespaceUri" value="http://service.graph.cos.telenor.com/"/>
+        <property name="serviceName" value="ResourceReadServiceImplService"/>
+        <property name="portName" value="ResourceReadServiceImplPort"/>
+    </bean>
+    
+    <bean id="graphResourceReadServiceMaster" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" primary="true" parent="graphResourceReadService">
+        <property name="endpointAddress" value="${endpoint.graph.master.url}"/>
+    </bean>
+    
+    <bean id="graphResourceReadServiceSlave" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" primary="true" parent="graphResourceReadService">
+        <property name="endpointAddress" value="${endpoint.graph.slave.url}"/>
+    </bean>
+    
+    <bean id="cosReadUpdateService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" primary="true">
+        <property name="serviceInterface" value="com.telenor.cosread.service.update.UpdateServiceEndpoint"/>
+        <property name="wsdlDocumentUrl" value="classpath:cosReadUpdate.wsdl"/>
+        <property name="namespaceUri" value="http://update.service.cosread.telenor.com/"/>
+        <property name="serviceName" value="UpdateServiceEndpointService"/>
+        <property name="portName" value="UpdateServiceEndpointPort"/>
+        <property name="endpointAddress" value="${endpoint.cosreadupdate.master.url}"/>
+    </bean>
+    
+    <bean id="resourceUpdateService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" primary="true" >
+        <property name="serviceInterface" value="com.telenor.cos.graph.service.ResourceUpdateServiceImpl" />
+        <property name="wsdlDocumentUrl" value="classpath:graphResourceUpdate.wsdl" />
+        <property name="namespaceUri" value="http://service.graph.cos.telenor.com/" />
+        <property name="serviceName" value="ResourceUpdateServiceImplService" />
+        <property name="portName" value="ResourceUpdateServiceImplPort" />
+    </bean>
+    
+    <bean id="resourceUpdateServiceMaster" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" primary="true" parent="resourceUpdateService">
+        <property name="endpointAddress" value="${endpoint.graphUpdate.master.url}"/>
+    </bean>
+    <bean id="resourceUpdateServiceSlave" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" primary="true" parent="resourceUpdateService">
+        <property name="endpointAddress" value="${endpoint.graphUpdate.slave.url}"/>
+    </bean>
+    
+</beans>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tran eventId="104:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020441">
+    <delete schema="USER_RESOURCE">
+        <oldValues>
+            <cell name="CS_USER_ID" type="VARCHAR">cosmaster</cell>
+            <cell name="RESOURCE_ID" type="NUMERIC">456</cell>
+        </oldValues>
+    </delete>
+</tran>

@@ -1,0 +1,3 @@
+select KURT_ID,MASTER_ID 
+from MASTER_CUSTOMER
+where INFO_IS_DELETED = 'N'

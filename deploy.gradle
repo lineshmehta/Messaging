@@ -1,0 +1,199 @@
+import java.io.File;
+
+ext.releaseBaseDir = "~/releasebase/"
+ext.releaseDir = "~/release_$majorVersion/$version"
+
+
+ext.mwLink_CustomerDetailsView = 'http://mw:8080/download/attachments/4653743/customer_details_view.csv'
+
+configurations {
+    distribution
+}
+
+
+dependencies {
+    if (!isBuiltLocally) {
+        distribution "${groupId}:${distName}:${version}@zip"
+    }
+}
+
+task deployPrepare() {
+    doLast {
+        println "Release base directory is set to: $releaseBaseDir"
+        println "Release directory is set to: ${releaseDir}"
+        println "groupId: $groupId"
+        println "artifactName: $artifactName"
+        println "version: $version"
+        println "Will be releasing to environment: [$env, $cosServers]"
+    }
+}
+
+task stopDeployedTomcat(dependsOn: deployPrepare) {
+    doLast {
+        println "Shutting down tomcat ..."
+        def pid = getPIDFromPIDFile()
+        if (pid != null){
+            println "Killing [with -9] pid: " + pid
+            try{
+                "kill -9 ${pid}".execute()
+            }catch (Exception ex){
+                println "WARNING: ********************************** Tomcat may still be running! **********************************"
+            }
+        }
+        Thread.sleep(7000)
+    }
+}
+
+def getPIDFromPIDFile() {
+    try {
+        ext.home = System.env['HOME']
+        File pidFile = new File(home + "\\release_$majorVersion" + "\\tomcat\\8590\\8590.pid")
+        println "path to pidFile: " + pidFile.canonicalPath
+        return pidFile.text
+    }
+    catch(Exception e){
+        println "************************************* WARNING: Tomcat pid file was not found! **************************************"
+    }
+}
+
+task downloadDistribution() {
+    ext.targetDir = "$buildDir/distributions"
+    inputs.files configurations.distribution
+    outputs.files targetDir
+
+    doLast {
+        if (!isBuiltLocally) {
+            copy {
+                from configurations.distribution.singleFile
+                into distsDir
+            }
+        }
+    }
+}
+
+task deployRemote() << {
+    ext.distributionFile = artifactName + '-distribution-' + version + '.zip'
+
+    cosServers.each { serverLogon ->
+        def user = serverLogon.user
+        def cosServer = serverLogon.server
+        def isLocalhost = cosServer == "localhost"
+        def tmpInstallDir = "~/releasebase/tmpInstallDir"
+
+        println "Release target is: ${user}@" + cosServer + ':' + releaseBaseDir
+
+        println "Create relelease base dir and make sure tmp installation dir does not exists: "
+
+        executeCommand(isLocalhost, user, cosServer,
+                ". ./.bash_profile; if [ -d $tmpInstallDir ]; then echo $tmpInstallDir exists; rm -rf $tmpInstallDir; fi; mkdir -p $releaseBaseDir",)
+
+
+        def copyArgs = "scp -o BatchMode=yes $distributionFile ${user}@${cosServer}:${releaseBaseDir}"
+        if (isLocalhost) {
+            copyArgs = "cp $distributionFile ${releaseBaseDir}"
+        }
+
+        println "  copy files to server, using command: ${copyArgs}"
+        exec {
+            executable 'bash'
+            args '-c'
+            args "${copyArgs}"
+            workingDir distsDir
+        }
+
+        def scripts = [
+                    "Unpack zip file:  $distributionFile ": ". ./.bash_profile; cd ${releaseBaseDir}; unzip ${distributionFile} -d ${tmpInstallDir}",
+                    "Running preInstall.sh": ". ./.bash_profile; cd ${tmpInstallDir}; ./preInstall.sh ${env}",
+                ]
+
+        scripts.each { entry ->
+            println entry.key
+            executeCommand(isLocalhost, user, cosServer, entry.value)
+        }
+    }
+}
+
+task cleanLocalReleaseDir(type: Delete, dependsOn: [stopDeployedTomcat, deployPrepare]) {
+    doLast {
+        try{
+            println "Deleting [${releaseDir}] ..."
+            "rm -rf ${releaseDir}".execute()
+            println "Deleting [${releaseBaseDir}] ..."
+            "rm -rf ${releaseBaseDir}".execute()
+        }catch (Exception e){
+            if(e.message.contains("busy")){
+                println "Error: Unable to stop TOMCAT SERVER. Please try again AFTER killing the process manually and deleting the entire release folder at [${releaseDir}]"
+                System.exit(1)
+            } else {
+                println e.message
+            }
+        }
+    }
+}
+
+task deployLocal(dependsOn: [cleanLocalReleaseDir, deployRemote]) {
+    doLast {
+        println "Deployed to local server"
+    }
+}
+
+def createJDBM3TestDataDir() {
+    jdbm3TestDataDir = new File(buildDir,"jdbm3TestDataDir")
+    jdbm3TestDataDir.mkdirs()
+    jdbm3TestDataDir.eachFile {file -> file.delete()}//cleanup
+    return jdbm3TestDataDir
+}
+
+def getDataFilesFromconfluence(File pathToDownLoadFiles){
+    customerDetailsCsvFile = new File(pathToDownLoadFiles,'customer_details_view.csv')
+    customerDetailsCsvFile.text = new URL("$mwLink_CustomerDetailsView").text;
+}
+
+def executeCommand (String command){
+    isWindows = System.properties['os.name'].contains('Win')
+    shell = isWindows ? 'cmd' : 'bash'
+    shellType = isWindows ? '/c' : '-c'
+    executeCommand (shell, shellType, command)
+}
+
+def executeCommand (String shell, String shellType, String command){
+    println "Command Executed : " + command
+    exec {
+        commandLine = [shell, shellType, command]
+    }
+}
+
+task insertJDBM3TestData(dependsOn:[createJdbmBatchUpdateJar]){
+    doLast {
+        jdbm3TestDataDir = createJDBM3TestDataDir()
+        getDataFilesFromconfluence(jdbm3TestDataDir)
+        jdbm3TestDataDir.eachFile { file ->
+            executeCommand("java -jar $buildDir/jdbm3-batch/${version}/jdbm-batch.jar $jdbm3TestDataDir customer 10")
+        }
+    }
+}
+
+if (isBuiltLocally) {
+    deployRemote.dependsOn("messagingDistribution", "deployPrepare")
+} else {
+    deployRemote.dependsOn("downloadDistribution", "deployPrepare")
+}
+
+void executeCommand(boolean isLocalhost, String user, String cosServer, String command) {
+    if (isLocalhost) {
+        exec {
+            executable 'bash'
+            args '-c'
+            args "cd;" + command
+            workingDir distsDir
+        }
+    } else {
+        exec {
+            executable 'ssh'
+            args '-o BatchMode=yes'
+            args "${user}@${cosServer}"
+            args command
+            workingDir distsDir
+        }
+    }
+}

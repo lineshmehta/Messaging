@@ -1,0 +1,80 @@
+/**
+ * This script sets up IDE build files for IntelliJ IDEA.
+ */
+
+idea {
+    project {
+        ipr {
+            withXml { provider ->
+                root = provider.asNode()
+
+                // Set GIT as version control system
+                root.component.find { it.@name == 'VcsDirectoryMappings' }.mapping.@vcs = 'Git'
+                root.children().add(
+                        new NodeBuilder().component(name: "CheckStyle-IDEA") {
+                            option(name: "configuration") {
+                                map {
+                                    entry(key: "active-configuration", value: "FILE:$rootDir/.cosgradle/root/config/checkstyle/checkstyle.xml:Cos 2.0")
+                                    entry(key: "check-test-classes", value: "true")
+                                    entry(key: "location-0", value: "FILE:$rootDir/.cosgradle/root/config/checkstyle/checkstyle.xml:Cos 2.0")
+                                    entry(key: "property-0.checkstyleConfigDir", value: "FILE:$rootDir/.cosgradle/root/config/checkstyle/checkstyle_suppress.xml")
+                                    entry(key: "thirdparty-classpath", value: "")
+                                }
+                            }
+                        }
+                )
+            }
+
+        }
+
+
+    }
+
+    workspace {
+        idea.workspace.iws.withXml { provider ->
+            root = provider.asNode()
+
+            // disable change-list tracking
+            root.component.find { it.@name == 'ChangeListManager' }.
+                    option.find { it.@name == 'TRACKING_ENABLED' }.
+                    @value = 'false'
+
+            //disable "make before launch"
+            def runManagerComponent = root.component.find { it.@name == 'RunManager' }
+            def defaultConfigurations = runManagerComponent.configuration.findAll {
+                it.@default == 'true' && ['JUnit', 'Application'].contains(it.@type)
+            }
+            defaultConfigurations.each {
+                def parameters = "-Xmx256m -Xbootclasspath/a:\"build/resources/test;build/resources/main\""
+                it.option.find { it.@name == 'VM_PARAMETERS' }.@value = parameters
+                it.method.option.find { it.@name == 'Make'}.@enabled = 'false'
+            }
+        }
+    }
+
+    allprojects {
+        idea {
+            module {
+                excludeDirs -= [file('.gradle'), file('build')]
+
+                excludeDirs += [file('build/checkstyle'), file('build/classes'), file('build/dependency-cache'),
+                        file('build/distributions'), file('build/docs'), file('build/libs'), file('build/reports'),
+                        file('build/test-results'), file('build/tmp'), file('build/tomcat')]
+
+                sourceDirs += [file('build/src.wsWrapperGen/java'), file('src/main/webapp'), file('src/main/wsdl'), file('src/main/groovy'),
+                        file('src/main/java'), file('src/main/resources'), file('src/solr')]
+
+                iml {
+                    if (project.properties['sourceSets']) {
+                        outputDir = project.sourceSets.main.output.classesDir
+                        testOutputDir = project.sourceSets.test.output.classesDir
+                        withXml { provider ->
+                            root = provider.asNode()
+                            root.component.find { it.@name == 'NewModuleRootManager' }.'@inherit-compiler-output' = 'false'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

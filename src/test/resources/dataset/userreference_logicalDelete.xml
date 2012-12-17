@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tran eventId="104:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020441">
+<update schema="USER_REFERENCE">
+    <values>
+        <cell name="INFO_IS_DELETED" type="CHAR">Y</cell>
+    </values>
+    <oldValues>
+        <cell name="SUBSCR_ID" type="NUMERIC">32870370</cell>
+        <cell name="DIRECTORY_NUMBER_ID" type="NUMERIC">47603487</cell>
+        <cell name="CONTRACT_ID" type="INT">13363967</cell>
+        <cell name="NUMBER_TYPE" type="CHAR">TM</cell>
+        <cell name="USER_REF_DESCR" type="VARCHAR">TEST REF 1</cell>
+        <cell name="INFO_REG_DATE" type="DATETIME">20120730 14:41:47:243</cell>
+        <cell name="INFO_CHG_DATE" type="DATETIME">20120730 14:41:47:243</cell>
+        <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">S212RT</cell>
+        <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        <cell name="EINVOICE_REF" type="VARCHAR"> </cell>
+    </oldValues>
+</update>
+</tran>

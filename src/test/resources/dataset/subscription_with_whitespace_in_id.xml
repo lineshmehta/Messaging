@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream>
+<tran eventId="102:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020001">
+<update schema="SUBSCRIPTION">
+   <values>
+      <cell name="SUBSCR_VALID_TO_DATE" type="DATETIME">10.05.2012 00:00:00</cell>
+   </values>
+    <oldValues>
+        <cell name="SUBSCR_ID" type="NUMERIC">  666 </cell>
+        <cell name="SUBSCR_VALID_FROM_DATE" type="DATETIME">09.01.2012 00:00:00</cell> 
+        <cell name="SUBSCR_VALID_TO_DATE" type="DATETIME"/>
+   </oldValues>
+</update>
+</tran>
+</dbStream>

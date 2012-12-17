@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream>
+<tran eventId="104:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020441">
+    <insert schema="RESOURCE">
+         <values>
+                <cell name="RESOURCE_ID" type="NUMERIC">456</cell>
+                <cell name="RESOURCE_LINK_ID" type="NUMERIC">456</cell>
+                <cell name="RESOURCE_SYSTEM_ID" type="NUMERIC">456</cell>
+                <cell name="RESOURCE_TYPE_ID" type="NUMERIC">6</cell>
+                <cell name="RESOURCE_TYPE_ID_KEY" type="VARCHAR">958064853</cell>
+                <cell name="RESOURCE_HAS_CONTENT_INHERIT" type="CHAR">N</cell>
+                <cell name="RESOURCE_HAS_STRUCTURE_INHERIT" type="CHAR">Y</cell>
+                <cell name="INFO_REG_DATE" type="DATETIME">17.10.1999 12:38:19</cell>
+                <cell name="INFO_REG_APPL_NAME" type="VARCHAR">123</cell>
+                <cell name="INFO_REG_USER_NAME" type="VARCHAR">789</cell>
+                <cell name="INFO_CHG_DATE" type="DATETIME">Area 52</cell>
+                <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">ÅP</cell>
+                <cell name="INFO_CHG_USER_NAME" type="VARCHAR">Letter</cell>
+                <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+                <cell name="INFO_TIMESTAMP" type="TIMESTAMP">000200002ad48d74</cell>
+          </values>
+      </insert>
+</tran>
+</dbStream>

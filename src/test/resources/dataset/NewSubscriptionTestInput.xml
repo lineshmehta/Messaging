@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://dhttm12:8000/RepraWebApp/dtds/dbeventstream.xsd" environment="REP_connector.RepCondb">
+  <tran eventId="190:000000086287f85502152acf000c02152acb00060000a04e00c0794a0000000000010003">
+    <insert schema="SUBSCRIPTION">
+      <values>
+        <cell name="SUBSCR_ID" type="NUMERIC">30868100</cell>
+        <cell name="CONTRACT_ID" type="INT">11384718</cell>
+        <cell name="SYSTEM_TYPE_ID" type="CHAR">GSM   </cell>
+        <cell name="SUBSCR_VERSION_ID" type="SMALLINT">1</cell>
+        <cell name="PRODUCT_ID" type="INT">NULL</cell>
+        <cell name="S212_PRODUCT_ID" type="CHAR">NULL</cell>
+        <cell name="DEALER_ID" type="INT">NULL</cell>
+        <cell name="AGR_ID" type="CHAR">NULL</cell>
+        <cell name="DIRECTORY_NUMBER_ID" type="NUMERIC">94185440</cell>
+        <cell name="CUST_ID_RESP" type="NUMERIC">8193298</cell>
+        <cell name="CUST_ID_PAYER" type="NUMERIC">8193298</cell>
+        <cell name="CUST_ID_USER" type="NUMERIC">6935066</cell>
+        <cell name="S212_REF_ID_RESP" type="CHAR">PR007693936</cell>
+        <cell name="SUBSCR_VALID_FROM_DATE" type="DATETIME">20120511 00:00:00:000</cell>
+        <cell name="SUBSCR_VALID_TO_DATE" type="DATETIME">NULL</cell>
+        <cell name="SUBSCR_STATUS_ID" type="CHAR"> </cell>
+        <cell name="SUBSCR_HAS_SECRET_NUMBER" type="CHAR">NULL</cell>
+        <cell name="SUBSCR_IS_TRUMF_MEMBER" type="CHAR">NULL</cell>
+        <cell name="SUBSCR_COMMISSION" type="INT">NULL</cell>
+        <cell name="ACC_ID" type="INT">9137845</cell>
+        <cell name="INFO_REG_DATE" type="DATETIME">20120511 11:40:49:860</cell>
+        <cell name="INFO_REG_APPL_NAME" type="VARCHAR">S212RT</cell>
+        <cell name="INFO_REG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_CHG_DATE" type="DATETIME">20120511 11:40:49:860</cell>
+        <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        <cell name="SUBSCR_TYPE_ID" type="CHAR">NULL</cell>
+        <cell name="SIGNATURE_HOLDER" type="VARCHAR">ZAJKOWSKI TOMASZ GRZEGORZ</cell>
+        <cell name="DIRECTORY_NUMBER_PREFIX" type="NUMERIC">40</cell>
+      </values>
+    </insert>
+  </tran>
+</dbStream>

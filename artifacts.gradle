@@ -1,0 +1,199 @@
+import org.apache.tools.ant.taskdefs.GenerateKey.DistinguishedName
+
+configurations {
+    messagingEvents
+    messaging
+    activeMqWebConsoleWar
+}
+
+repositories {
+    mavenRepo url: 'http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/cos2-releases/'
+    mavenRepo url: 'http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/thirdparty'
+}
+
+
+dependencies {
+   activeMqWebConsoleWar('org.apache.activemq:activemq-web-console-secure:5.7.0@war') {
+       transitive = false
+   }
+}
+
+war.dependsOn javadoc
+war {
+    exclude ('**/message-server.xml')
+
+    from("$buildDir/docs/javadoc") {
+        include '**/*.*'
+        into 'javadoc'
+    }
+
+    from ("$rootDir/src/main/webapp/WEB-INF/jsp/infopage.jsp") {
+        into '/'
+        expand (version: "${version}", gitCommit: "${gitCommit}")
+    }
+
+    //Crude way of copying the modified file. Have to live with it as nothing else works!
+    from("${buildDir}/resources/main/message-server.xml") {
+        into '/WEB-INF/classes/'
+    }
+
+    archiveName = "${baseName}.war"
+}
+
+
+task configurePaths {
+    doLast
+     {
+         replaceTokenInFiles()
+     }
+}
+
+def replaceTokenInFiles(){
+    String pathToDB = "release_$majorVersion".toString()
+    File messageServerXml = new File("${buildDir}/resources/main/message-server.xml")
+    messageServerXml.setText(messageServerXml.text.replaceAll("@deploymentFolder@", pathToDB))
+
+    File jdbm3PropFile = new File("${buildDir}/resources/main/jdbm3.properties")
+    jdbm3PropFile.setText(jdbm3PropFile.text.replaceAll("@deploymentFolder@", pathToDB))
+}
+
+task getActiveMqConsoleWar {
+    doLast {
+        configurations.activeMqWebConsoleWar.each { dep ->
+            copy {
+                from dep
+                into project.libsDir
+            }
+            
+        }
+    }
+}
+
+task copyToLib(type: Copy) {
+    into "$buildDir/jdbm3-batch/${version}/lib"
+    from configurations.runtime
+}
+
+String getManifestClassPath( Set runtimeLibFiles ) {
+    return "lib/" + runtimeLibFiles.name.join( " lib/" );
+}
+
+
+task createJdbmBatchUpdateJar(type: Jar, dependsOn:[classes,copyToLib, configurePaths])  {
+
+    archiveName = "jdbm-batch.jar"
+    destinationDir = new File(project.buildDir, "/jdbm3-batch/${version}")
+    
+    from sourceSets.main.output.classesDir
+        include "**/com/telenor/cos/messaging/*"
+        include "**/com/telenor/cos/messaging/domain/*"
+        include "**/com/telenor/cos/messaging/jdbm/*"
+        include "**/com/telenor/cos/messaging/jdbm/batch/*"
+        include "**/com/telenor/cos/messaging/util/*"
+    
+    from sourceSets.main.output.resourcesDir
+        include "jdbm3-batch.xml"
+        include "jdbm3.properties"
+    
+    manifest.mainAttributes("Main-Class" : "com.telenor.cos.messaging.jdbm.batch.JDBMMain")
+    
+    manifest {
+        attributes "Class-Path":getManifestClassPath(configurations.runtime.resolve())
+    }
+    
+}
+
+task messagingDistribution(type: Zip) {
+    dependsOn setupEnvInstall, 'war', getActiveMqConsoleWar, createJdbmBatchUpdateJar
+
+    fileMode=0777
+    dirMode=0777
+
+    baseName = distName
+
+    from(libsDir.path) {
+        include '**/*.war'
+        rename() {
+            String fileName -> "${version}/" + fileName
+        }
+    }
+    
+    from(buildDir.path + "/jdbm3-batch/") {
+    }
+
+    from('src/tomcat') {
+        rename() {
+            String fileName -> "${version}/" + fileName
+        }
+    }
+
+    from('src/deploymentscripts') {
+        rename() {String fileName ->
+            if (fileName.startsWith('preInstall')) {
+                fileName = fileName
+            } else {
+                fileName = "${version}/" + fileName
+            }
+        }
+    }
+    
+    from("${buildDir}/configurations/") {
+    }
+}
+
+task messagingEventsJar(type: Jar, dependsOn: classes) {
+    baseName = "${eventsJar}"
+    version = "${majorVersion}"
+    from sourceSets.main.output.classesDir
+    include "**/com/telenor/cos/messaging/event/**"
+    include "**/com/telenor/cos/messaging/dataholder/**"
+}
+
+artifacts {
+    messagingEvents messagingEventsJar
+    messaging messagingDistribution
+}
+
+
+uploadMessagingEvents {
+    repositories.mavenDeployer {
+
+        repository(url: "http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/cos2-snapshots/") {
+            authentication(userName: "bamboo", password: "bamboo123")
+        }
+
+        addFilter('messagingEvents') {artifact, file ->
+            artifact.name == messagingEventsJar.baseName
+        }
+
+        pom('messagingEvents') {
+            groupId = 'com.telenor.cos'
+            artifactId = messagingEventsJar.baseName
+            version = "${majorVersion}" + "-SNAPSHOT"
+            whenConfigured { pom -> pom.dependencies = [] }
+            project {
+                properties {
+                    'timestamp' String.valueOf(System.currentTimeMillis())
+                }
+            }
+        }
+    }
+}
+
+
+uploadMessaging {
+    repositories.mavenDeployer {
+
+        repository(url: "http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/cos2-releases/") {
+            authentication(userName: "bamboo", password: "bamboo123")
+        }
+
+        addFilter('messagingDistribution') {artifact, file ->
+            artifact.name == messagingDistribution.baseName
+        }
+
+        pom('messagingDistribution').groupId = "${groupId}"
+        pom('messagingDistribution').artifactId = messagingDistribution.baseName
+        pom('messagingDistribution').version = "${version}"
+    }
+}

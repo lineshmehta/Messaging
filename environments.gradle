@@ -1,0 +1,90 @@
+import com.telenor.cos.deploy.*;
+
+buildscript {
+    repositories {
+        mavenRepo(url: 'http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/cos2-snapshots/') {
+            checkmodified = true
+        }
+    }
+    dependencies {
+        classpath "com.telenor.cos:common-gradle:${commonVersion}@jar"
+    }
+}
+
+def gcLogging = '-XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:${CATALINA_BASE}/logs/gc.log -XX:+CMSClassUnloadingEnabled'
+def commonGcParameters = " -XX:+UseConcMarkSweepGC -XX:+DisableExplicitGC $gcLogging"
+def allowJmx = ' -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=$(( $PORT + 200 ))'
+def commonAmqConsoleParam = ' -Dwebconsole.type=properties -Dwebconsole.jmx.url=service:jmx:rmi:///jndi/rmi://localhost:1099/jmxrmi -Dwebconsole.jmx.user= -Dwebconsole.jmx.password= -Dwebconsole.jms.user=system -Dwebconsole.jms.password=manager'
+def defaultCatalinaOpts = '-server -Xms4G -Xmx4G -XX:PermSize=256m -XX:MaxPermSize=512m' + commonGcParameters + allowJmx
+
+Environment common_local = new Environment(
+        shutdownPort: 8505,
+        user: "cosmessaging",
+        serverName: "localhost",
+)
+
+Environment common_test = new Environment(
+        shutdownPort: 8505,
+        user: "cosmessaging",
+
+)
+
+def environments = [
+        "local": new Environment(
+                inheritsFrom: common_local,
+                servers: new Server(clusters: [new Cluster(port: 8590, isMaster: true, catalinaOpts: "-Dmaster=master -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n -server -Xms500m -Xmx500m $commonGcParameters $allowJmx -Dwebconsole.jms.url=tcp://localhost:61616 $commonAmqConsoleParam"),
+                                               new Cluster(port: 8591, isSlave: true,  catalinaOpts: "-Dmaster=slave -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -server -Xms500m -Xmx500m $commonGcParameters $allowJmx -Dwebconsole.jms.url=tcp://localhost:61617 $commonAmqConsoleParam")
+                    ])
+        ),
+        "nasse": new Environment(
+                inheritsFrom: common_test,
+                serverName: "alt-cos08",
+                dataServer: "dhtnas01.corp.telenor.no",
+                servers: new Server(clusters: [new Cluster(port: 8590, isMaster: true, catalinaOpts: defaultCatalinaOpts + " -Dmaster=master -Dwebconsole.jms.url=tcp://alt-cos08:8691" + commonAmqConsoleParam),
+                                               new Cluster(port: 8591, isSlave: true,  catalinaOpts: defaultCatalinaOpts + " -Dmaster=slave -Dwebconsole.jms.url=tcp://alt-cos08:8692" + commonAmqConsoleParam)
+                    ])
+        ),
+        "tussi": new Environment(
+                inheritsFrom: common_test,
+                serverName: "alt-cos07",
+                dataServer: "dht-tm10",
+                servers: new Server(clusters: [new Cluster(port: 8590, isMaster: true, catalinaOpts: defaultCatalinaOpts + " -Dmaster=master -Dwebconsole.jms.url=tcp://alt-cos07:8691" + commonAmqConsoleParam),
+                                               new Cluster(port: 8591, isSlave: true,  catalinaOpts: defaultCatalinaOpts + " -Dmaster=slave -Dwebconsole.jms.url=tcp://alt-cos07:8692" + commonAmqConsoleParam)
+                    ])
+        ),
+        "brumm": new Environment(
+                inheritsFrom: common_test,
+                dataServer: "pkg-km-test",
+                servers: [
+                    new Server(serverName: "alt-cos09", clusters: [new Cluster(port: 8590, isMaster: true, catalinaOpts: defaultCatalinaOpts + " -Dmaster=master -Dwebconsole.jms.url=tcp://alt-cos09:8691" + commonAmqConsoleParam)]),
+                    new Server(serverName: "alt-cos10", clusters: [new Cluster(port: 8590, isSlave: true,  catalinaOpts: defaultCatalinaOpts + " -Dmaster=slave -Dwebconsole.jms.url=tcp://alt-cos10:8691" + commonAmqConsoleParam)])
+                    ]
+        ),
+        "prod": new Environment(
+                inheritsFrom: common_test,
+                dataServer: "php-km.mobil.telenor.no",
+                servers: [
+                    new Server(serverName: "alp-cos11", clusters: [new Cluster(port: 8590, isMaster: true, catalinaOpts: defaultCatalinaOpts + " -Dmaster=master -Dwebconsole.jms.url=tcp://alp-cos11:8691" + commonAmqConsoleParam)]),
+                    new Server(serverName: "alp-cos13", clusters: [new Cluster(port: 8590, isSlave: true,  catalinaOpts: defaultCatalinaOpts + " -Dmaster=slave -Dwebconsole.jms.url=tcp://alp-cos13:8691" + commonAmqConsoleParam)])
+                    ]
+        )
+]
+
+if (!hasProperty('env')) {
+    ext.env = 'local'
+    logger.info "Environment property 'env' not specified, using default value: '$env'"
+}
+
+ext.cosServers = environments[env].logon
+ext.printEnvironmentProperties = { println "Environment properties: [env=$env, cosServer=$cosServer]" }
+
+task setupEnvInstall() {
+    outputs.files "${buildDir}/configurations/"
+    doLast {
+        def baseDir = "${buildDir}/configurations/"
+        environments.entrySet().each { entry ->
+            def env = entry.value
+            env.createEnvirontmentScripts("${baseDir}/${version}/${entry.key}")
+        }
+    }
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tran eventId="102:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020001">
+	<insert schema="MASTER_CUSTOMER">
+		<values>
+			<cell name="MASTER_ID" type="NUMERIC">369</cell>
+			<cell name="KURT_ID" type="INT">3978455</cell>
+			<cell name="UNIT_TYPE_ID" type="CHAR">V</cell>
+			<cell name="CUST_UNIT_DATE" type="DATETIME">23.07.1953 00:00:00</cell>
+			<cell name="CUST_UNIT_NUMBER" type="INT">958064853</cell>
+			<cell name="CUST_LAST_NAME" type="VARCHAR">TOLLAN</cell>
+			<cell name="CUST_FIRST_NAME" type="VARCHAR">ELLEN ANNE</cell>
+			<cell name="CUST_MIDDLE_NAME" type="VARCHAR"></cell>
+			<cell name="CUST_SOUNDX_LAST_NAME" type="VARCHAR">TÅLAN</cell>
+			<cell name="CUST_SOUNDX_FIRST_NAME" type="VARCHAR">ELENANE</cell>
+			<cell name="CUST_STATUS_ID" type="CHAR">K</cell>
+			<cell name="CUST_HAS_RES_MAIL" type="CHAR">NULL</cell>
+			<cell name="CUST_HAS_RES_PHONE" type="CHAR">N</cell>
+			<cell name="CUST_CLASS_ID" type="CHAR">C</cell>
+			<cell name="CUST_CRED_RISK_ID" type="CHAR"></cell>
+			<cell name="FAR_ID_MAIN" type="INT">158099200</cell>
+			<cell name="ADDR_LINE_MAIN" type="VARCHAR">Brekkebakken 19</cell>
+			<cell name="ADDR_LINE_MAIN_INFO" type="VARCHAR"></cell>
+			<cell name="POSTCODE_ID_MAIN" type="INT">2540</cell>
+			<cell name="POSTCODE_NAME_MAIN" type="VARCHAR">TOLGA</cell>
+			<cell name="FAR_ID_PBOX" type="INT">388071600</cell>
+			<cell name="ADDR_LINE_PBOX" type="VARCHAR">FURULY</cell>
+			<cell name="POSTCODE_ID_PBOX" type="INT">2540</cell>
+			<cell name="POSTCODE_NAME_PBOX" type="VARCHAR">TOLGA</cell>
+			<cell name="ADDR_PHONE_NUMBER" type="VARCHAR">62494214</cell>
+			<cell name="ADDR_TELEFAX_NUMBER" type="VARCHAR"></cell>
+			<cell name="ADDR_EMAIL_NAME" type="VARCHAR"></cell>
+			<cell name="ADDR_WEBSITE_NAME" type="VARCHAR"></cell>
+			<cell name="SERVICE_LEVEL_ID" type="CHAR"></cell>
+			<cell name="REGION_ID" type="INT"></cell>
+			<cell name="COUNTRY_ID" type="CHAR"></cell>
+			<cell name="INFO_REG_DATE" type="DATETIME">17.10.1999 12:38:19</cell>
+			<cell name="INFO_REG_APPL_NAME" type="VARCHAR">DBARTISAN</cell>
+			<cell name="INFO_REG_USER_NAME" type="VARCHAR">aalaro</cell>
+			<cell name="INFO_CHG_DATE" type="DATETIME">29.04.2011 18:23:10</cell>
+			<cell name="INFO_CHG_APPL_NAME" type="VARCHAR">CCDW</cell>
+			<cell name="INFO_CHG_USER_NAME" type="VARCHAR">CCDW</cell>
+			<cell name="INFO_PRIM_SOURCE_NAME" type="VARCHAR">MasterImpo</cell>
+			<cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+			<cell name="INFO_QUALITY_INDEX" type="CHAR">1</cell>
+			<cell name="INFO_TIMESTAMP" type="TIMESTAMP">000200002ad48d74</cell>
+		</values>
+	</insert>
+</tran>

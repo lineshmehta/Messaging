@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://dhtnas01:8000/RepraWebApp/dtds/dbeventstream.xsd"
+          environment="REP_connector.RepCondb">
+    <dbEvent eventId="106:00000005a15ff8970016611900030016611800110000a0ae00e753760000000000010001">
+        <update schema="CS_USER">
+            <values>
+                <cell name="INFO_TIMESTAMP" type="VARBINARY">0x00050000a15ff8b9</cell>
+                <cell name="LOGON_DATE_SUCCESSFUL" type="DATETIME">20120815 14:03:31:406</cell>
+            </values>
+            <oldValues>
+                <cell name="CS_USER_ID" type="VARCHAR">QueueBridge</cell>
+                <cell name="CS_USER_FIRST_NAME" type="VARCHAR">Roar</cell>
+                <cell name="CS_USER_LAST_NAME" type="VARCHAR">Myrset</cell>
+                <cell name="CS_USER_PWD" type="VARCHAR">vYÃ¥ZÃ lÂÂ§</cell>
+                <cell name="CS_USER_PWD_VALID_FROM_DATE" type="DATETIME">20031217 00:00:00:000</cell>
+                <cell name="CS_USER_PWD_VALID_TO_DATE" type="DATETIME">20191217 00:00:00:000</cell>
+                <cell name="INFO_REG_DATE" type="DATETIME">20031217 12:29:37:243</cell>
+                <cell name="INFO_REG_APPL_NAME" type="VARCHAR">COS Securi</cell>
+                <cell name="INFO_REG_USER_NAME" type="VARCHAR">CS_ADMIN</cell>
+                <cell name="INFO_CHG_DATE" type="DATETIME">20070115 08:23:53:656</cell>
+                <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">Aqua</cell>
+                <cell name="INFO_CHG_USER_NAME" type="VARCHAR">aaramy</cell>
+                <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+                <cell name="INFO_TIMESTAMP" type="VARBINARY">0x00050000a15ff892</cell>
+                <cell name="CREATED_USERS" type="INT">0</cell>
+                <cell name="LOGON_DATE_FAILED" type="DATETIME">NULL</cell>
+                <cell name="LOGON_DATE_SUCCESSFUL" type="DATETIME">20120815 14:02:14:933</cell>
+                <cell name="MAX_PASSIVE_MONTHS" type="INT">NULL</cell>
+                <cell name="LOGON_UNSUCCESSFUL" type="INT">0</cell>
+            </oldValues>
+        </update>
+    </dbEvent>
+</dbStream>

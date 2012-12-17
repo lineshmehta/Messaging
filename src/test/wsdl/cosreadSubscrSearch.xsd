@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.4-b01-. --><xs:schema xmlns:tns="http://search.service.cosread.telenor.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://search.service.cosread.telenor.com/">
+
+<xs:element name="findSubscriptions" type="tns:findSubscriptions"></xs:element>
+
+<xs:element name="findSubscriptionsByPeriod" type="tns:findSubscriptionsByPeriod"></xs:element>
+
+<xs:element name="findSubscriptionsByPeriodResponse" type="tns:findSubscriptionsByPeriodResponse"></xs:element>
+
+<xs:element name="findSubscriptionsResponse" type="tns:findSubscriptionsResponse"></xs:element>
+
+<xs:element name="getSubscriptionCountForAccounts" type="tns:getSubscriptionCountForAccounts"></xs:element>
+
+<xs:element name="getSubscriptionCountForAccountsResponse" type="tns:getSubscriptionCountForAccountsResponse"></xs:element>
+
+<xs:element name="getSubscriptionsForAccount" type="tns:getSubscriptionsForAccount"></xs:element>
+
+<xs:element name="getSubscriptionsForAccountResponse" type="tns:getSubscriptionsForAccountResponse"></xs:element>
+
+<xs:element name="getUserAggregates" type="tns:getUserAggregates"></xs:element>
+
+<xs:element name="getUserAggregatesResponse" type="tns:getUserAggregatesResponse"></xs:element>
+
+<xs:element name="ping" type="tns:ping"></xs:element>
+
+<xs:element name="pingResponse" type="tns:pingResponse"></xs:element>
+
+<xs:complexType name="findSubscriptions">
+<xs:sequence>
+<xs:element name="userDto" type="tns:userDto" minOccurs="0"></xs:element>
+<xs:element name="clause" type="tns:subscriptionClauseDto" minOccurs="0"></xs:element>
+<xs:element name="viewFilterDto" type="tns:subscriptionViewFilterDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userDto" final="extension restriction">
+<xs:sequence></xs:sequence>
+<xs:attribute name="applicationId" type="xs:int" use="required"></xs:attribute>
+<xs:attribute name="userId" type="xs:string" use="required"></xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="subscriptionClauseDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="fields" type="tns:subscriptionSearchFields" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="valueToSearchFor" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="subscriptionViewFilterDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="filterPreferences" type="tns:viewFilterPreferencesDto" minOccurs="0"></xs:element>
+<xs:element name="sortField" type="tns:subscriptionSortFields" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewFilterPreferencesDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="fromPage" type="xs:long"></xs:element>
+<xs:element name="pageSize" type="xs:long"></xs:element>
+<xs:element name="sortOrder" type="tns:sortOrder" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findSubscriptionsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:subscriptionSearchResultDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="subscriptionSearchResultDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="searchResultMetaData" type="tns:searchResultMetaDataDto" minOccurs="0"></xs:element>
+<xs:element name="subscriptions" type="tns:subscriptionDto" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchResultMetaDataDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="from" type="xs:long"></xs:element>
+<xs:element name="QTime" type="xs:long"></xs:element>
+<xs:element name="totalHits" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="subscriptionDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="accountId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="contractId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="custIdUser" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="firstName" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="invoiceReference" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="isBarred" type="xs:boolean" minOccurs="0"></xs:element>
+<xs:element name="isSecretNumber" type="xs:boolean" minOccurs="0"></xs:element>
+<xs:element name="lastName" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="middleName" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="msisdn" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="msisdnDatakort" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="msisdnTvilling" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="shortNumber" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="status" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="subscriptionId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="subscriptionType" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userReference" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userReferenceDescription" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="validFromDate" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="validToDate" type="xs:dateTime" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findSubscriptionsByPeriod">
+<xs:sequence>
+<xs:element name="userDto" type="tns:userDto" minOccurs="0"></xs:element>
+<xs:element name="period" type="tns:periodDto" minOccurs="0"></xs:element>
+<xs:element name="isBarred" type="xs:boolean"></xs:element>
+<xs:element name="viewFilterDto" type="tns:subscriptionViewFilterDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="periodDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="validFromDate" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="validToDate" type="xs:dateTime" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findSubscriptionsByPeriodResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:subscriptionSearchResultDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSubscriptionCountForAccounts">
+<xs:sequence>
+<xs:element name="userDto" type="tns:userDto" minOccurs="0"></xs:element>
+<xs:element name="masterCustomerId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSubscriptionCountForAccountsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:subscrCountForAccountsSearchResultDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="subscrCountForAccountsSearchResultDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="accountsSubscriptionCountDtoList" type="tns:accountsSubscriptionCountDto" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="accountsSubscriptionCountDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="accountId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="noOfSubscriptions" type="xs:int" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSubscriptionsForAccount">
+<xs:sequence>
+<xs:element name="userDto" type="tns:userDto" minOccurs="0"></xs:element>
+<xs:element name="accountId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="viewFilterDto" type="tns:subscriptionViewFilterDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSubscriptionsForAccountResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:subscriptionSearchResultDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getUserAggregates">
+<xs:sequence>
+<xs:element name="userDto" type="tns:userDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getUserAggregatesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:userAggregatedSearchResultDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userAggregatedSearchResultDto" final="extension restriction">
+<xs:sequence>
+<xs:element name="numberOfBarredSubscriptions" type="xs:long"></xs:element>
+<xs:element name="numberOfNewSubscriptions" type="xs:long"></xs:element>
+<xs:element name="numberOfTerminatedSubscriptions" type="xs:long"></xs:element>
+<xs:element name="numberOfTotalHits" type="xs:long"></xs:element>
+<xs:element name="searchTime" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ping">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pingResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="subscriptionSearchFields">
+<xs:restriction base="xs:string">
+<xs:enumeration value="WILDCARD"></xs:enumeration>
+<xs:enumeration value="SUBSCRIPTION_ID"></xs:enumeration>
+<xs:enumeration value="ACCOUNT_ID"></xs:enumeration>
+<xs:enumeration value="MSISDN"></xs:enumeration>
+<xs:enumeration value="MSISDN_DATAKORT"></xs:enumeration>
+<xs:enumeration value="MSISDN_TVILLING"></xs:enumeration>
+<xs:enumeration value="SUBSCRIPTION_TYPE"></xs:enumeration>
+<xs:enumeration value="VALID_FROM_DATE"></xs:enumeration>
+<xs:enumeration value="CUST_ID_USER"></xs:enumeration>
+<xs:enumeration value="FIRST_NAME"></xs:enumeration>
+<xs:enumeration value="MIDDLE_NAME"></xs:enumeration>
+<xs:enumeration value="LAST_NAME"></xs:enumeration>
+<xs:enumeration value="SHORT_NUMBER"></xs:enumeration>
+<xs:enumeration value="CONTRACT_ID"></xs:enumeration>
+<xs:enumeration value="USER_REFERENCE"></xs:enumeration>
+<xs:enumeration value="USER_REFERENCE_DESCRIPTION"></xs:enumeration>
+<xs:enumeration value="INVOICE_REFERENCE"></xs:enumeration>
+<xs:enumeration value="IS_SECRET_NUMBER"></xs:enumeration>
+<xs:enumeration value="IS_BARRED"></xs:enumeration>
+<xs:enumeration value="STATUS"></xs:enumeration>
+<xs:enumeration value="VALID_TO_DATE"></xs:enumeration>
+<xs:enumeration value="ALL_FIELDS"></xs:enumeration>
+<xs:enumeration value="ADDITIONAL_MSISDNS"></xs:enumeration>
+<xs:enumeration value="NAMES"></xs:enumeration>
+<xs:enumeration value="REFERENCES"></xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="sortOrder">
+<xs:restriction base="xs:string">
+<xs:enumeration value="ASCENDING"></xs:enumeration>
+<xs:enumeration value="DESCENDING"></xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="subscriptionSortFields">
+<xs:restriction base="xs:string">
+<xs:enumeration value="SUBSCRIPTION_ID"></xs:enumeration>
+<xs:enumeration value="ACCOUNT_ID"></xs:enumeration>
+<xs:enumeration value="MSISDN"></xs:enumeration>
+<xs:enumeration value="MSISDN_DATAKORT"></xs:enumeration>
+<xs:enumeration value="MSISDN_TVILLING"></xs:enumeration>
+<xs:enumeration value="SUBSCRIPTION_TYPE"></xs:enumeration>
+<xs:enumeration value="VALID_FROM_DATE"></xs:enumeration>
+<xs:enumeration value="CUST_ID_USER"></xs:enumeration>
+<xs:enumeration value="FIRST_NAME"></xs:enumeration>
+<xs:enumeration value="MIDDLE_NAME"></xs:enumeration>
+<xs:enumeration value="LAST_NAME"></xs:enumeration>
+<xs:enumeration value="SHORT_NUMBER"></xs:enumeration>
+<xs:enumeration value="CONTRACT_ID"></xs:enumeration>
+<xs:enumeration value="USER_REFERENCE"></xs:enumeration>
+<xs:enumeration value="USER_REFERENCE_DESCRIPTION"></xs:enumeration>
+<xs:enumeration value="INVOICE_REFERENCE"></xs:enumeration>
+<xs:enumeration value="IS_BARRED"></xs:enumeration>
+<xs:enumeration value="STATUS"></xs:enumeration>
+<xs:enumeration value="VALID_TO_DATE"></xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>

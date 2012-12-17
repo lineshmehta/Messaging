@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.4-b01-. --><xs:schema xmlns:tns="http://service.graph.cos.telenor.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.graph.cos.telenor.com/">
+
+<xs:element name="updateAccount" type="tns:updateAccount"></xs:element>
+
+<xs:element name="updateAccountResponse" type="tns:updateAccountResponse"></xs:element>
+
+<xs:element name="updateCustomer" type="tns:updateCustomer"></xs:element>
+
+<xs:element name="updateCustomerResponse" type="tns:updateCustomerResponse"></xs:element>
+
+<xs:element name="updateMasterCustomer" type="tns:updateMasterCustomer"></xs:element>
+
+<xs:element name="updateMasterCustomerResponse" type="tns:updateMasterCustomerResponse"></xs:element>
+
+<xs:element name="updateSubscription" type="tns:updateSubscription"></xs:element>
+
+<xs:element name="updateSubscriptionResponse" type="tns:updateSubscriptionResponse"></xs:element>
+
+<xs:element name="updateUser" type="tns:updateUser"></xs:element>
+
+<xs:element name="updateUserMapping" type="tns:updateUserMapping"></xs:element>
+
+<xs:element name="updateUserMappingResponse" type="tns:updateUserMappingResponse"></xs:element>
+
+<xs:element name="updateUserResource" type="tns:updateUserResource"></xs:element>
+
+<xs:element name="updateUserResourceResponse" type="tns:updateUserResourceResponse"></xs:element>
+
+<xs:element name="updateUserResponse" type="tns:updateUserResponse"></xs:element>
+
+<xs:complexType name="updateSubscription">
+<xs:sequence>
+<xs:element name="subscriptionDto" type="tns:subscriptionDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="subscriptionDto">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="parentAccountId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userCustomerId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateSubscriptionResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateCustomer">
+<xs:sequence>
+<xs:element name="customerDto" type="tns:customerDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="customerDto">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="parentId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateCustomerResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUserMapping">
+<xs:sequence>
+<xs:element name="userMappingDto" type="tns:userMappingDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userMappingDto">
+<xs:sequence>
+<xs:element name="applicationId" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="id" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="telenorUserId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUserMappingResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUser">
+<xs:sequence>
+<xs:element name="userDto" type="tns:userDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userDto">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUserResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateAccount">
+<xs:sequence>
+<xs:element name="accountDto" type="tns:accountDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="accountDto">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ownerCustomerId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="payerCustomerId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateAccountResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateMasterCustomer">
+<xs:sequence>
+<xs:element name="masterCustomerDto" type="tns:masterCustomerDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="masterCustomerDto">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="parentId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateMasterCustomerResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUserResource">
+<xs:sequence>
+<xs:element name="userResourceAccessDto" type="tns:userResourceAccessDto" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userResourceAccessDto">
+<xs:sequence>
+<xs:element name="inheritContent" type="xs:boolean"></xs:element>
+<xs:element name="inheritStructure" type="xs:boolean"></xs:element>
+<xs:element name="resourceId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="resourceType" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateUserResourceResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>

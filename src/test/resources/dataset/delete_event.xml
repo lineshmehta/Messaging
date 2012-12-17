@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://dhtnas01:8000/RepraWebApp/dtds/dbeventstream.xsd"
+          environment="REP_connector.RepCondb">"
+    <dbEvent eventId="104:000000022b9a1bc6002457a20007ffffffff00000000a09a016950540003000000010001">"
+        <delete schema="CS_USER">"
+            <oldValues>"
+                <cell name="CS_USER_ID" type="VARCHAR">QueueBridge</cell>
+            </oldValues>
+        </delete>
+    </dbEvent>
+</dbStream>

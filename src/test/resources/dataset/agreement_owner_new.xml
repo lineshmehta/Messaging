@@ -1,0 +1,24 @@
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://dhttm12:8000/RepraWebApp/dtds/dbeventstream.xsd" environment="REP_connector.RepCondb">
+  <dbEvent eventId="190:00000008e6094d4d0215ee3d000f0215ee3d00090000a09400e8add00000000000010003">
+    <insert schema="AGREEMENT_OWNER">
+      <values>
+        <cell name="AGREEMENT_OWNER_ID" type="NUMERIC">531314</cell>
+        <cell name="AGREEMENT_ID" type="NUMERIC">531314</cell>
+        <cell name="MASTER_ID" type="NUMERIC">100318909</cell>
+        <cell name="AGREEMENT_OWNER_ROLE" type="SMALLINT">3</cell>
+        <cell name="EXTERNAL_PARTNER_ID" type="NUMERIC">NULL</cell>
+        <cell name="VALID_FROM_DATE" type="DATETIME">20120720 14:07:09:733</cell>
+        <cell name="VALID_TO_DATE" type="DATETIME">NULL</cell>
+        <cell name="INFO_REG_DATE" type="DATETIME">20120720 14:07:09:733</cell>
+        <cell name="INFO_REG_APPLICATION_ID" type="SMALLINT">61</cell>
+        <cell name="INFO_REG_USER_NAME" type="VARCHAR">tn_29700</cell>
+        <cell name="INFO_CHG_DATE" type="DATETIME">NULL</cell>
+        <cell name="INFO_CHG_APPLICATION_ID" type="SMALLINT">NULL</cell>
+        <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        <cell name="DEALER_ID" type="NUMERIC">NULL</cell>
+        <cell name="INFO_TIMESTAMP" type="VARBINARY">0x00080000e6094d56</cell>
+      </values>
+    </insert>
+  </dbEvent>
+</dbStream>

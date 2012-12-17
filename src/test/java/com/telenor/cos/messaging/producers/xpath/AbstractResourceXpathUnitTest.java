@@ -1,0 +1,77 @@
+package com.telenor.cos.messaging.producers.xpath;
+
+/**
+ * @author Babaprakash D
+ *
+ */
+public class AbstractResourceXpathUnitTest extends AbstractXpathUnitTest {
+
+    protected static final String NEW_RESOURCE_XML = "<insert schema=\"RESOURCE\">"
+            + "<values>"
+            + "<cell name=\"RESOURCE_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_LINK_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_SYSTEM_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_TYPE_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_TYPE_ID_KEY\" type=\"VARCHAR\">Superaccount</cell>"
+            + "<cell name=\"RESOURCE_HAS_CONTENT_INHERIT\" type=\"CHAR\">N</cell>"
+            + "<cell name=\"RESOURCE_HAS_STRUCTURE_INHERIT\" type=\"CHAR\">Y</cell>"
+            + "<cell name=\"INFO_REG_DATE\" type=\"DATETIME\">17.10.1999 12:38:19</cell>"
+            + "<cell name=\"INFO_REG_APPL_NAME\" type=\"VARCHAR\">123</cell>"
+            + "<cell name=\"INFO_REG_USER_NAME\" type=\"VARCHAR\">789</cell>"
+            + "<cell name=\"INFO_CHG_DATE\" type=\"DATETIME\">Area 52</cell>"
+            + "<cell name=\"INFO_CHG_APPL_NAME\" type=\"VARCHAR\">ÅP</cell>"
+            + "<cell name=\"INFO_CHG_USER_NAME\" type=\"VARCHAR\">Letter</cell>"
+            + "<cell name=\"INFO_IS_DELETED\" type=\"CHAR\">N</cell>"
+            + "<cell name=\"INFO_TIMESTAMP\" type=\"TIMESTAMP\">000200002ad48d74</cell>"
+            + "</values>"
+            + "</insert>";
+    
+    protected static final String LOGICAL_DELETE_RESOURCE_XML = "<update schema=\"RESOURCE\">"
+            + "<values>"
+            + "<cell name=\"INFO_IS_DELETED\" type=\"CHAR\">Y</cell>"
+            + "</values>"
+            + "<oldValues>"
+            + "<cell name=\"RESOURCE_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_LINK_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_SYSTEM_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_TYPE_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_TYPE_ID_KEY\" type=\"VARCHAR\">Superaccount</cell>"
+            + "<cell name=\"RESOURCE_HAS_CONTENT_INHERIT\" type=\"CHAR\">N</cell>"
+            + "<cell name=\"RESOURCE_HAS_STRUCTURE_INHERIT\" type=\"CHAR\">Y</cell>"
+            + "<cell name=\"INFO_REG_DATE\" type=\"DATETIME\">17.10.1999 12:38:19</cell>"
+            + "<cell name=\"INFO_REG_APPL_NAME\" type=\"VARCHAR\">123</cell>"
+            + "<cell name=\"INFO_REG_USER_NAME\" type=\"VARCHAR\">789</cell>"
+            + "<cell name=\"INFO_CHG_DATE\" type=\"DATETIME\">Area 52</cell>"
+            + "<cell name=\"INFO_CHG_APPL_NAME\" type=\"VARCHAR\">ÅP</cell>"
+            + "<cell name=\"INFO_CHG_USER_NAME\" type=\"VARCHAR\">Letter</cell>"
+            + "<cell name=\"INFO_IS_DELETED\" type=\"CHAR\">N</cell>"
+            + "<cell name=\"INFO_TIMESTAMP\" type=\"TIMESTAMP\">000200002ad48d74</cell>"
+            + "</oldValues>"
+            + "</update>";
+    
+    protected static final String UPDATE_RESOURCE_XML = "<update schema=\"RESOURCE\">"
+            + "<values>"
+            + "<cell name=\"RESOURCE_TYPE_ID\" type=\"NUMERIC\">457</cell>"
+            + "<cell name=\"RESOURCE_TYPE_ID_KEY\" type=\"VARCHAR\">Superaccount1</cell>"
+            + "<cell name=\"RESOURCE_HAS_CONTENT_INHERIT\" type=\"CHAR\">Y</cell>"
+            + "<cell name=\"RESOURCE_HAS_STRUCTURE_INHERIT\" type=\"CHAR\">N</cell>"
+            + "</values>"
+            + "<oldValues>"
+            + "<cell name=\"RESOURCE_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_LINK_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_SYSTEM_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_TYPE_ID\" type=\"NUMERIC\">456</cell>"
+            + "<cell name=\"RESOURCE_TYPE_ID_KEY\" type=\"VARCHAR\">Superaccount</cell>"
+            + "<cell name=\"RESOURCE_HAS_CONTENT_INHERIT\" type=\"CHAR\">N</cell>"
+            + "<cell name=\"RESOURCE_HAS_STRUCTURE_INHERIT\" type=\"CHAR\">Y</cell>"
+            + "<cell name=\"INFO_REG_DATE\" type=\"DATETIME\">17.10.1999 12:38:19</cell>"
+            + "<cell name=\"INFO_REG_APPL_NAME\" type=\"VARCHAR\">123</cell>"
+            + "<cell name=\"INFO_REG_USER_NAME\" type=\"VARCHAR\">789</cell>"
+            + "<cell name=\"INFO_CHG_DATE\" type=\"DATETIME\">Area 52</cell>"
+            + "<cell name=\"INFO_CHG_APPL_NAME\" type=\"VARCHAR\">ÅP</cell>"
+            + "<cell name=\"INFO_CHG_USER_NAME\" type=\"VARCHAR\">Letter</cell>"
+            + "<cell name=\"INFO_IS_DELETED\" type=\"CHAR\">N</cell>"
+            + "<cell name=\"INFO_TIMESTAMP\" type=\"TIMESTAMP\">000200002ad48d74</cell>"
+            + "</oldValues>"
+            + "</update>";
+}

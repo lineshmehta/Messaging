@@ -1,0 +1,30 @@
+configurations {
+    coscommon
+}
+
+dependencies {
+    coscommon ("com.telenor.cos:common-gradle:${commonVersion}@jar") { changing = true }
+}
+
+configurations.coscommon{
+    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+
+apply plugin: 'coscommon'
+
+//Need this due to the task applyCosCommonGradle.
+//The CosCommonInstall which should have done this do it too late
+//And if I put task applyCosCommonGradle to be executed last, we don't find task cobertura.
+new File("${cosCommonRoot}").mkdirs()
+configurations.coscommon.files.each{
+    file -> ant.unzip( src : file, dest: "${cosCommonRoot}" )
+}
+
+task applyCosCommonGradle( dependsOn: cosCommonInstall ) {
+    cosCommonScripts.each { script ->
+        println "Applying: " + script +".gradle"
+        apply from: "${cosCommonRoot}/${script}.gradle"
+    }
+}

@@ -1,0 +1,44 @@
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://dhttm12:8000/RepraWebApp/dtds/dbeventstream.xsd" environment="REP_connector.RepCondb">
+  <tran eventId="190:000000086329d1260047d8f500100047d8f400020000a06700cd99770000000000010003">
+    <update schema="ACCOUNT">
+      <values>
+        <cell name="INFO_CHG_DATE" type="DATETIME">20120605 12:50:03:010</cell>
+        <cell name="ACC_STATUS_ID" type="CHAR">PÅ</cell>
+        <cell name="ACC_TYPE_ID" type="CHAR">NA</cell>
+      </values>
+      <oldValues>
+        <cell name="ACC_ID" type="INT">9364740</cell>
+        <cell name="CUST_ID_RESP" type="NUMERIC">5121342</cell>
+        <cell name="CUST_ID_PAYER" type="NUMERIC">5121342</cell>
+        <cell name="S212_REF_ID_RESP" type="CHAR">TM000800740</cell>
+        <cell name="S212_REF_ID_PAYER" type="CHAR">TM000800740</cell>
+        <cell name="ACC_NAME" type="VARCHAR"> </cell>
+        <cell name="ACC_INV_INTERVAL" type="CHAR">M</cell>
+        <cell name="ACC_PAYM_COND_ID" type="CHAR">30</cell>
+        <cell name="ACC_PAYM_TYPE_ID" type="CHAR">B</cell>
+        <cell name="ACC_STATUS_ID" type="CHAR"> </cell>
+        <cell name="ACC_TYPE_ID" type="CHAR">NO</cell>
+        <cell name="INFO_REG_DATE" type="DATETIME">20061205 13:18:55:456</cell>
+        <cell name="INFO_REG_APPL_NAME" type="VARCHAR">S212</cell>
+        <cell name="INFO_REG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_CHG_DATE" type="DATETIME">20111002 00:45:56:056</cell>
+        <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">S212RT</cell>
+        <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        <cell name="AGR_ID" type="CHAR">0          </cell>
+        <cell name="ACC_STATUS_ID2" type="CHAR">PA</cell>
+        <cell name="ACC_RITEL_CODE" type="CHAR"> </cell>
+        <cell name="ACC_PAYM_SECURITY" type="CHAR">NULL</cell>
+        <cell name="ACC_INV_MEDIUM" type="CHAR">NULL</cell>
+        <cell name="NEXT_INVOICE_DATE" type="DATETIME">20061205 00:00:00:000</cell>
+        <cell name="E_INVOICE_ADDRESS" type="VARCHAR">NULL</cell>
+        <cell name="INVOICE_SYSTEM" type="CHAR">NULL</cell>
+        <cell name="FOREIGN_ACCOUNT" type="NUMERIC">NULL</cell>
+        <cell name="INVOICE_LEVEL" type="VARCHAR">B</cell>
+        <cell name="ACCOUNTING_LOCATION" type="VARCHAR">NULL</cell>
+        <cell name="RESPONSIBLE_LOCATION" type="VARCHAR">NULL</cell>
+        <cell name="WANTED_DUE_DATE" type="NUMERIC">0</cell>
+      </oldValues>
+    </update>
+  </tran>
+</dbStream>

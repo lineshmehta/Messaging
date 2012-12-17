@@ -1,0 +1,19 @@
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://dht-tm10:8000/RepraWebApp/dtds/dbeventstream.xsd" environment="REP_connector.RepCondb">
+  <dbEvent eventId="103:00000008df118ccf021b25ef000b021b25ee000d0000a09e00f22f800000000000010001">
+    <insert schema="USER_REFERENCE">
+      <values>
+        <cell name="SUBSCR_ID" type="NUMERIC">1</cell>
+        <cell name="DIRECTORY_NUMBER_ID" type="NUMERIC">47603487</cell>
+        <cell name="CONTRACT_ID" type="INT">13363967</cell>
+        <cell name="NUMBER_TYPE" type="CHAR">ES</cell>
+        <cell name="USER_REF_DESCR" type="VARCHAR">TEST REF 1</cell>
+        <cell name="INFO_REG_DATE" type="DATETIME">20120730 14:41:47:243</cell>
+        <cell name="INFO_CHG_DATE" type="DATETIME">20120730 14:41:47:243</cell>
+        <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">S212RT</cell>
+        <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        <cell name="EINVOICE_REF" type="VARCHAR">TEST EINVOICE REF</cell>
+      </values>
+    </insert>
+  </dbEvent>
+</dbStream>

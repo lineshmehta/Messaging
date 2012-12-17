@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream>
+<tran eventId="102:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020001">
+    <update schema="MASTER_CUSTOMER">
+        <values>
+            <cell name="INFO_IS_DELETED" type="CHAR">Y</cell>
+        </values>
+        <oldValues>
+            <cell name="MASTER_ID" type="NUMERIC">369</cell>
+            <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        </oldValues>
+    </update>
+</tran>
+</dbStream>

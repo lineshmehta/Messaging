@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://dhttm12:8000/RepraWebApp/dtds/dbeventstream.xsd"
+          environment="REP_connector.RepCondb">
+    <tran eventId="190:000000086294a6c70216449c00060216449a00050000a05100a4fe190000000000010003">
+        <update schema="SUBSCRIPTION">
+            <values>
+                <cell name="SUBSCR_ID" type="NUMERIC"></cell>
+            </values>
+            <oldValues>
+                <cell name="SUBSCR_ID" type="NUMERIC">1235345643</cell>
+                <cell name="CONTRACT_ID" type="INT">11384752</cell>
+            </oldValues>
+        </update>
+    </tran>
+</dbStream>

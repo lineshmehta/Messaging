@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.4-b01-. -->
+<xs:schema xmlns:tns="http://service.graph.cos.telenor.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0"
+           targetNamespace="http://service.graph.cos.telenor.com/">
+
+    <xs:element name="readSubscription" type="tns:readSubscription"></xs:element>
+
+    <xs:element name="readSubscriptionResponse" type="tns:readSubscriptionResponse"></xs:element>
+
+    <xs:complexType name="readSubscription">
+        <xs:sequence>
+            <xs:element name="subscriptionId" type="xs:string" minOccurs="0"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="readSubscriptionResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:subscriptionDto" minOccurs="0"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="subscriptionDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"></xs:element>
+            <xs:element name="parentAccountId" type="xs:string" minOccurs="0"></xs:element>
+            <xs:element name="userCustomerId" type="xs:string" minOccurs="0"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

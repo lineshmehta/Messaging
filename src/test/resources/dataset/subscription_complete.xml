@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://dhttm12:8000/RepraWebApp/dtds/dbeventstream.xsd" environment="REP_connector.RepCondb">
+  <tran eventId="190:00000008627bd0ad012c824c000e012c824c00090000a04d00d34fbe0000000000010003">
+    <update schema="SUBSCRIPTION">
+      <values>
+        <cell name="SUBSCR_ID" type="NUMERIC">30870131</cell>
+        <cell name="CONTRACT_ID" type="INT">11384657</cell>
+        <cell name="SYSTEM_TYPE_ID" type="CHAR">GSM</cell>
+        <cell name="SUBSCR_VERSION_ID" type="SMALLINT">1</cell>
+        <cell name="PRODUCT_ID" type="INT">55</cell>
+        <cell name="S212_PRODUCT_ID" type="CHAR">55S12</cell>
+        <cell name="DEALER_ID" type="INT">1234</cell>
+        <cell name="AGR_ID" type="CHAR">NGG5</cell>
+        <cell name="DIRECTORY_NUMBER_ID" type="NUMERIC">99114533</cell>
+        <cell name="CUST_ID_RESP" type="NUMERIC">8193478</cell>
+        <cell name="CUST_ID_PAYER" type="NUMERIC">8193478</cell>
+        <cell name="CUST_ID_USER" type="NUMERIC">8193478</cell>
+        <cell name="S212_REF_ID_RESP" type="CHAR">TM001105094</cell>
+        <cell name="SUBSCR_VALID_FROM_DATE" type="DATETIME">20120510 00:00:00:000</cell>
+        <cell name="SUBSCR_VALID_TO_DATE" type="DATETIME">NULL</cell>
+        <cell name="SUBSCR_STATUS_ID" type="CHAR"></cell>
+        <cell name="SUBSCR_HAS_SECRET_NUMBER" type="CHAR">Y</cell>
+        <cell name="SUBSCR_IS_TRUMF_MEMBER" type="CHAR">NULL</cell>
+        <cell name="SUBSCR_COMMISSION" type="INT">NULL</cell>
+        <cell name="ACC_ID" type="INT">8636339</cell>
+        <cell name="INFO_REG_DATE" type="DATETIME">20120510 12:49:22:100</cell>
+        <cell name="INFO_REG_APPL_NAME" type="VARCHAR">S212RT</cell>
+        <cell name="INFO_REG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_CHG_DATE" type="DATETIME">20120510 12:49:22:100</cell>
+        <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        <cell name="SUBSCR_TYPE_ID" type="CHAR">DK</cell>
+        <cell name="SIGNATURE_HOLDER" type="VARCHAR">NULL</cell>
+        <cell name="DIRECTORY_NUMBER_PREFIX" type="NUMERIC">10</cell>
+      </values>
+      <oldValues>
+        <cell name="SUBSCR_ID" type="NUMERIC">30870131</cell>
+        <cell name="CONTRACT_ID" type="INT">11384657</cell>
+        <cell name="SYSTEM_TYPE_ID" type="CHAR">GSM   </cell>
+        <cell name="SUBSCR_VERSION_ID" type="SMALLINT">1</cell>
+        <cell name="PRODUCT_ID" type="INT">22</cell>
+        <cell name="S212_PRODUCT_ID" type="CHAR">NULL</cell>
+        <cell name="DEALER_ID" type="INT">1234</cell>
+        <cell name="AGR_ID" type="CHAR">888999</cell>
+        <cell name="DIRECTORY_NUMBER_ID" type="NUMERIC">991145323</cell>
+        <cell name="CUST_ID_RESP" type="NUMERIC">8193478</cell>
+        <cell name="CUST_ID_PAYER" type="NUMERIC">8193478</cell>
+        <cell name="CUST_ID_USER" type="NUMERIC">8193478</cell>
+        <cell name="S212_REF_ID_RESP" type="CHAR">TM001105094</cell>
+        <cell name="SUBSCR_VALID_FROM_DATE" type="DATETIME">20120510 00:00:00:000</cell>
+        <cell name="SUBSCR_VALID_TO_DATE" type="DATETIME">NULL</cell>
+        <cell name="SUBSCR_STATUS_ID" type="CHAR">LLO</cell>
+        <cell name="SUBSCR_HAS_SECRET_NUMBER" type="CHAR">Y</cell>
+        <cell name="SUBSCR_IS_TRUMF_MEMBER" type="CHAR">NULL</cell>
+        <cell name="SUBSCR_COMMISSION" type="INT">NULL</cell>
+        <cell name="ACC_ID" type="INT">8636339</cell>
+        <cell name="INFO_REG_DATE" type="DATETIME">20120510 12:49:22:100</cell>
+        <cell name="INFO_REG_APPL_NAME" type="VARCHAR">S212RT</cell>
+        <cell name="INFO_REG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_CHG_DATE" type="DATETIME">20120510 12:49:22:100</cell>
+        <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+        <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+        <cell name="SUBSCR_TYPE_ID" type="CHAR">DK</cell>
+        <cell name="SIGNATURE_HOLDER" type="VARCHAR">NULL</cell>
+        <cell name="DIRECTORY_NUMBER_PREFIX" type="NUMERIC">10</cell>
+      </oldValues>
+    </update>
+  </tran>
+</dbStream>

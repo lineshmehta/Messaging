@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tran eventId="102:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020001">
+    <insert schema="MAST_STRUCTURE">
+        <values>
+            <cell name="STRUCT_TYPE_ID" type="SMALLINT">369</cell>
+            <cell name="MAST_ID_OWNER" type="NUMERIC">777</cell>
+            <cell name="MAST_ID_MEMBER" type="NUMERIC">666</cell>
+            <cell name="INFO_REG_DATE" type="DATETIME">17.10.1999 12:38:19</cell>
+            <cell name="INFO_REG_APPL_NAME" type="VARCHAR">DBARTISAN</cell>
+            <cell name="INFO_REG_USER_NAME" type="VARCHAR">aalaro</cell>
+            <cell name="INFO_CHG_DATE" type="DATETIME">29.04.2011 18:23:10</cell>
+            <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">CCDW</cell>
+            <cell name="INFO_CHG_USER_NAME" type="VARCHAR">CCDW</cell>
+            <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+            <cell name="INFO_QUALITY_INDEX" type="CHAR">1</cell>
+            <cell name="INFO_TIMESTAMP" type="TIMESTAMP">000200002ad48d74</cell>
+        </values>
+    </insert>
+</tran>

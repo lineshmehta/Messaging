@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tran eventId="104:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020441">
+	<insert schema="tnuid_user_mapping">
+		<values>
+			<cell name="tnu_id" type="VARCHAR">_1000030</cell>
+			<cell name="application_id" type="NUMERIC">8</cell>
+			<cell name="cs_user_id" type="VARCHAR">M0_100469591</cell>
+			<cell name="info_reg_date" type="DATETIME">06.09.2007 14:33:58</cell>
+			<cell name="info_reg_appl_name" type="VARCHAR">sql-plugin</cell>
+			<cell name="info_reg_user_name" type="VARCHAR">t715869</cell>
+			<cell name="info_chg_date" type="DATETIME">06.09.2007 14:33:58</cell>
+			<cell name="info_chg_appl_name" type="VARCHAR">sql-plugin</cell>
+			<cell name="info_chg_user_name" type="VARCHAR">t715869</cell>
+			<cell name="info_timestamp" type="TIMESTAMP">00020000cec0f64e</cell>
+		</values>
+	</insert>
+</tran>

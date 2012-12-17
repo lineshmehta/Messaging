@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream>
+	<tran
+		eventId="104:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020441">
+		<insert schema="ACCOUNT">
+			<values>
+				<cell name="ACC_ID" type="INT">9364740</cell>
+				<cell name="CUST_ID_RESP" type="NUMERIC">6935066</cell>
+				<cell name="CUST_ID_PAYER" type="NUMERIC">6935066</cell>
+				<cell name="S212_REF_ID_RESP" type="CHAR">PR007901240</cell>
+				<cell name="S212_REF_ID_PAYER" type="CHAR">PR007901240</cell>
+				<cell name="ACC_NAME" type="VARCHAR">storaccount</cell>
+				<cell name="ACC_INV_INTERVAL" type="CHAR">M</cell>
+				<cell name="ACC_PAYM_COND_ID" type="CHAR">16</cell>
+				<cell name="ACC_PAYM_TYPE_ID" type="CHAR">B</cell>
+				<cell name="ACC_STATUS_ID" type="CHAR">234</cell>
+				<cell name="ACC_TYPE_ID" type="CHAR">NO</cell>
+				<cell name="INFO_REG_DATE" type="DATETIME">09.01.2012 12:15:22</cell>
+				<cell name="INFO_REG_APPL_NAME" type="VARCHAR">COS</cell>
+				<cell name="INFO_REG_USER_NAME" type="VARCHAR">padadmin</cell>
+				<cell name="INFO_CHG_DATE" type="DATETIME">09.01.2012 12:15:22</cell>
+				<cell name="INFO_CHG_APPL_NAME" type="VARCHAR">S212RT</cell>
+				<cell name="INFO_CHG_USER_NAME" type="VARCHAR" />
+				<cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+				<cell name="AGR_ID" type="CHAR">0</cell>
+				<cell name="ACC_STATUS_ID2" type="CHAR">PA</cell>
+				<cell name="ACC_RITEL_CODE" type="CHAR" />
+				<cell name="ACC_PAYM_SECURITY" type="CHAR" />
+				<cell name="ACC_INV_MEDIUM" type="CHAR">LL</cell>
+				<cell name="NEXT_INVOICE_DATE" type="DATETIME" />
+				<cell name="E_INVOICE_ADDRESS" type="VARCHAR">area 52</cell>
+				<cell name="INVOICE_SYSTEM" type="CHAR" />
+				<cell name="FOREIGN_ACCOUNT" type="NUMERIC" />
+				<cell name="INVOICE_LEVEL" type="VARCHAR">B</cell>
+				<cell name="ACCOUNTING_LOCATION" type="VARCHAR" />
+				<cell name="RESPONSIBLE_LOCATION" type="VARCHAR" />
+				<cell name="WANTED_DUE_DATE" type="DECIMAL">0</cell>
+			</values>
+		</insert>
+	</tran>
+</dbStream>

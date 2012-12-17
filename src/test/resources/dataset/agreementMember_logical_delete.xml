@@ -1,0 +1,15 @@
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://dhttm12:8000/RepraWebApp/dtds/dbeventstream.xsd" environment="REP_connector.RepCondb">
+  <tran eventId="190:0000000863693bfe00e11f50000e00e11f5000020000a07000b5dc170000000000010003">
+    <update schema="AGREEMENT_MEMBER_NEW"> 
+       <values>
+          <cell name="INFO_IS_DELETED" type="CHAR">Y</cell>
+       </values>
+       <oldValues>
+          <cell name="AGREEMENT_MEMBER_ID" type="NUMERIC">666</cell>
+          <cell name="AGREEMENT_ID" type="NUMERIC">1</cell>
+          <cell name="CUST_UNIT_NUMBER" type="INT">121212</cell>
+          <cell name="MASTER_ID" type="NUMERIC">555</cell>
+       </oldValues>
+    </update>
+  </tran>
+</dbStream>

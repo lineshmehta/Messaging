@@ -1,0 +1,69 @@
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://dhttm12:8000/RepraWebApp/dtds/dbeventstream.xsd" environment="REP_connector.RepCondb">
+    <tran eventId="190:000000086387f3d4012bc7ae000a012bc7ae00030000a07500a759350000000000010003">
+        <update schema="CUSTOMER">
+            <values>
+                <cell name="CUST_STATUS_ID" type="CHAR"></cell>
+                <cell name="ADDR_CO_NAME" type="VARCHAR">NULL</cell>
+                <cell name="INFO_CHG_DATE" type="DATETIME">20120619 10:09:20:183</cell>
+                <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">S212RT</cell>
+                <cell name="INFO_CHG_USER_NAME" type="VARCHAR">COSTEST</cell>
+                <cell name="ADDR_STREET_NAME" type="VARCHAR">NULL</cell>
+                <cell name="ADDR_STREET_NUMBER" type="VARCHAR">NULL</cell>
+            </values>
+            <oldValues>
+                <cell name="CUST_ID" type="NUMERIC">30631</cell>
+                <cell name="S212_REF_ID" type="CHAR">PR000534325</cell>
+                <cell name="KURT_ID" type="INT">3064575</cell>
+                <cell name="UNIT_TYPE_ID" type="CHAR">P</cell>
+                <cell name="CUST_UNIT_DATE" type="DATETIME">19670311 00:00:00:000</cell>
+                <cell name="CUST_UNIT_NUMBER" type="INT">NULL</cell>
+                <cell name="CUST_LAST_NAME" type="VARCHAR">KANDAL</cell>
+                <cell name="CUST_FIRST_NAME" type="VARCHAR">REIDAR</cell>
+                <cell name="CUST_MIDDLE_NAME" type="VARCHAR">NULL</cell>
+                <cell name="CUST_SOUNDX_LAST_NAME" type="VARCHAR">KANAL</cell>
+                <cell name="CUST_SOUNDX_FIRST_NAME" type="VARCHAR">REITAR</cell>
+                <cell name="CUST_STATUS_ID" type="CHAR">NULL</cell>
+                <cell name="CUST_ID_MERGED_WITH" type="NUMERIC">30631</cell>
+                <cell name="CUST_HAS_RES_MAIL" type="CHAR"></cell>
+                <cell name="CUST_CRED_RISK_ID" type="CHAR"></cell>
+                <cell name="CUST_CLASS_ID" type="CHAR">NULL</cell>
+                <cell name="CUST_IS_MASTER" type="CHAR">NULL</cell>
+                <cell name="FAR_ID_MAIN" type="INT">NULL</cell>
+                <cell name="ADDR_LINE_MAIN" type="VARCHAR"></cell>
+                <cell name="ADDR_CO_NAME" type="VARCHAR"></cell>
+                <cell name="POSTCODE_ID_MAIN" type="INT">7790</cell>
+                <cell name="POSTCODE_NAME_MAIN" type="VARCHAR">MALM</cell>
+                <cell name="FAR_ID_PBOX" type="INT">NULL</cell>
+                <cell name="ADDR_LINE_PBOX" type="VARCHAR">666</cell>
+                <cell name="POSTCODE_ID_PBOX" type="INT">NULL</cell>
+                <cell name="POSTCODE_NAME_PBOX" type="VARCHAR">NULL</cell>
+                <cell name="ADDR_PHONE_NUMBER" type="VARCHAR">57867594</cell>
+                <cell name="ADDR_TELEFAX_NUMBER" type="VARCHAR">NULL</cell>
+                <cell name="ADDR_EMAIL_NAME" type="VARCHAR">NULL</cell>
+                <cell name="ADDR_WEBSITE_NAME" type="VARCHAR">NULL</cell>
+                <cell name="SERVICE_LEVEL_ID" type="CHAR">NULL</cell>
+                <cell name="SEGMENT_ID_1" type="SMALLINT">2</cell>
+                <cell name="SEGMENT_ID_2" type="SMALLINT">NULL</cell>
+                <cell name="SEGMENT_ID_3" type="SMALLINT">NULL</cell>
+                <cell name="INDUSTRY_ID" type="SMALLINT">NULL</cell>
+                <cell name="REGION_ID" type="INT">NULL</cell>
+                <cell name="COUNTRY_ID" type="CHAR">NULL</cell>
+                <cell name="INFO_REG_DATE" type="DATETIME">19901017 00:00:00:000</cell>
+                <cell name="INFO_REG_APPL_NAME" type="VARCHAR">S212</cell>
+                <cell name="INFO_REG_USER_NAME" type="VARCHAR">NULL</cell>
+                <cell name="INFO_CHG_DATE" type="DATETIME">20120619 10:09:18:823</cell>
+                <cell name="INFO_CHG_APPL_NAME" type="VARCHAR">COS</cell>
+                <cell name="INFO_CHG_USER_NAME" type="VARCHAR">tn_31742</cell>
+                <cell name="INFO_PRIM_SOURCE_NAME" type="VARCHAR">NULL</cell>
+                <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+                <cell name="ADDR_STREET_NAME" type="VARCHAR"></cell>
+                <cell name="ADDR_STREET_NUMBER" type="VARCHAR"></cell>
+                <cell name="ADDR_ENTRANCE_CODE" type="VARCHAR">NULL</cell>
+                <cell name="MASTER_ID" type="NUMERIC">100018010</cell>
+                <cell name="CREDIT_PROFILE" type="VARCHAR">P03</cell>
+                <cell name="COLLECTIVE_INV_RES" type="VARCHAR">NULL</cell>
+            </oldValues>
+        </update>
+    </tran>
+</dbStream>

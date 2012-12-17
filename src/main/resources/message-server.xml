@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+
+
+    <context:property-placeholder location="classpath:queues.properties,classpath:broker.properties"
+                                  ignore-unresolvable="true"
+                                  system-properties-mode="OVERRIDE"/>
+
+    <!-- Note: Beginning in ActiveMQ 5.4, the XML elements inside the <broker> element must be ordered alphabetically.
+               If you look at the XSD, this has always been the case with ActiveMQ.
+               The difference in 5.4 is that the XML configuration is actually being validated against the XML schema.
+    -->
+
+    <broker xmlns="http://activemq.apache.org/schema/core" id="broker">
+        <destinationPolicy>
+            <policyMap>
+                <policyEntries>
+                    <policyEntry queue=">">
+                        <deadLetterStrategy>
+                            <individualDeadLetterStrategy queuePrefix="DLQ." useQueueForQueueMessages="true"/>
+                        </deadLetterStrategy>
+                    </policyEntry>
+                </policyEntries>
+            </policyMap>
+        </destinationPolicy>
+        <persistenceAdapter>
+           <kahaDB directory="${HOME}/@deploymentFolder@/${kahadb.path}" journalMaxFileLength="${kahadb.cacheSize}" ignoreMissingJournalfiles="true"/>
+        </persistenceAdapter>
+        <plugins>
+            <simpleAuthenticationPlugin>
+                <users>
+                    <authenticationUser username="system" password="manager" groups="users,admins"/>
+                    <authenticationUser username="ota" password="ota" groups="ota_users"/>
+                </users>
+            </simpleAuthenticationPlugin>
+            <authorizationPlugin>
+                <map>
+                    <authorizationMap>
+                        <authorizationEntries>
+                            <authorizationEntry queue=">" read="admins" write="admins" admin="admins" />
+                            <authorizationEntry queue="Consumer.*.VirtualTopic.SubscriptionEquipment.>" read="ota_users" write="admins" admin="admins" />
+
+                            <authorizationEntry topic=">" read="admins" write="admins" admin="admins" />
+                            <authorizationEntry topic="ActiveMQ.Advisory.>" read="guests,users,ota_users" write="guests,users" admin="guests,users"/>
+                        </authorizationEntries>
+                    </authorizationMap>
+                </map>
+            </authorizationPlugin>
+        </plugins>
+        <systemUsage>
+            <systemUsage>
+                <memoryUsage>
+                    <memoryUsage limit="1 gb"/>
+                </memoryUsage>
+                <storeUsage>
+                    <storeUsage limit="10 gb"/>
+                </storeUsage>
+                <tempUsage>
+                    <tempUsage limit="1 gb"/>
+                </tempUsage>
+            </systemUsage>
+        </systemUsage>
+        <transportConnectors>
+            <transportConnector uri="${broker.url}"/>
+        </transportConnectors>
+        
+    </broker>
+
+    <bean id="jms" class="org.apache.camel.component.jms.JmsComponent"
+          p:connectionFactory-ref="connectionFactory"/>
+
+    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent"
+          p:connectionFactory-ref="connectionFactory"/>
+
+    <bean id="repServer" class="org.apache.camel.component.jms.JmsComponent">
+        <property name="connectionFactory">
+            <bean class="com.ibm.mq.jms.MQQueueConnectionFactory">
+                <property name="transportType" value="1" />
+                <property name="hostName" value="${repserver.hostName}" />
+                <property name="port" value="${repserver.port}" />
+                <property name="queueManager" value="${repserver.queueManager}" />
+                <property name="channel" value="${repserver.channel}" />
+           </bean>
+        </property>
+    </bean>
+
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory" p:brokerURL="${broker.url}"
+          p:userName="system" p:password="manager"/>
+
+</beans>

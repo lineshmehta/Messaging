@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.4-b01-. --><xs:schema xmlns:tns="http://update.service.cosread.telenor.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://update.service.cosread.telenor.com/">
+
+<xs:element name="deleteMasterCustomersById" type="tns:deleteMasterCustomersById"></xs:element>
+
+<xs:element name="deleteMasterCustomersByIdResponse" type="tns:deleteMasterCustomersByIdResponse"></xs:element>
+
+<xs:element name="deleteSubscriptionsById" type="tns:deleteSubscriptionsById"></xs:element>
+
+<xs:element name="deleteSubscriptionsByIdResponse" type="tns:deleteSubscriptionsByIdResponse"></xs:element>
+
+<xs:element name="updateMasterCustomers" type="tns:updateMasterCustomers"></xs:element>
+
+<xs:element name="updateMasterCustomersResponse" type="tns:updateMasterCustomersResponse"></xs:element>
+
+<xs:element name="updateSubscriptions" type="tns:updateSubscriptions"></xs:element>
+
+<xs:element name="updateSubscriptionsResponse" type="tns:updateSubscriptionsResponse"></xs:element>
+
+<xs:complexType name="deleteMasterCustomersById">
+<xs:sequence>
+<xs:element name="masterCustomerIds" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteMasterCustomersByIdResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateMasterCustomers">
+<xs:sequence>
+<xs:element name="masterCustomers" type="tns:updatableMasterCustomerDTO" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatableMasterCustomerDTO">
+<xs:sequence>
+<xs:element name="firstName" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="lastName" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="masterId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="middleName" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="organizationNumber" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="parentMasterId" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateMasterCustomersResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateSubscriptions">
+<xs:sequence>
+<xs:element name="subscriptions" type="tns:updatableSubscriptionDTO" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatableSubscriptionDTO">
+<xs:sequence>
+<xs:element name="accountId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="contractId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="custIdUser" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="customerFirstName" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="customerLastName" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="invoiceReference" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="isBarred" type="xs:boolean" minOccurs="0"></xs:element>
+<xs:element name="isSecretNumber" type="xs:boolean" minOccurs="0"></xs:element>
+<xs:element name="msisdn" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="msisdnDatakort" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="msisdnTvilling" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="shortNumber" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="status" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="subscriptionId" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="subscriptionType" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userReference" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="userReferenceDescription" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="validFromDate" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="validToDate" type="xs:dateTime" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateSubscriptionsResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteSubscriptionsById">
+<xs:sequence>
+<xs:element name="subscriptionIds" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteSubscriptionsByIdResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>

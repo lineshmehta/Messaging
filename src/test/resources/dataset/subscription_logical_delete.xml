@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbStream>
+    <tran eventId="102:00000000000029d5000014eb0001000014ea002900009c8d00930ee20000000000020001">
+        <update schema="SUBSCRIPTION">
+            <values>
+                <cell name="INFO_IS_DELETED" type="CHAR">Y</cell>
+            </values>
+            <oldValues>
+                <cell name="SUBSCR_ID" type="NUMERIC">32143317</cell>
+                <cell name="CONTRACT_ID" type="INT">12716621</cell>
+                <cell name="SYSTEM_TYPE_ID" type="CHAR">GSM</cell>
+                <cell name="SUBSCR_VERSION_ID" type="SMALLINT">1</cell>
+                <cell name="DEALER_ID" type="INT">1371</cell>
+                <cell name="AGR_ID" type="CHAR"/>
+                <cell name="DIRECTORY_NUMBER_ID" type="NUMERIC">580000506010</cell>
+                <cell name="CUST_ID_RESP" type="NUMERIC">5346149</cell>
+                <cell name="CUST_ID_PAYER" type="NUMERIC">5346149</cell>
+                <cell name="CUST_ID_USER" type="NUMERIC">6935066</cell>
+                <cell name="S212_REF_ID_RESP" type="CHAR">TM000848528</cell>
+                <cell name="SUBSCR_VALID_FROM_DATE" type="09.01.2012 00:00:00"/>
+                <cell name="SUBSCR_VALID_TO_DATE" type="DATETIME"/>
+                <cell name="SUBSCR_STATUS_ID" type="CHAR"/>
+                <cell name="SUBSCR_HAS_SECRET_NUMBER" type="CHAR"/>
+                <cell name="SUBSCR_IS_TRUMF_MEMBER" type="CHAR"/>
+                <cell name="SUBSCR_COMMISION" type="INT"/>
+                <cell name="ACC_ID" type="INT">999999001</cell>
+                <cell name="INFO_REG_DATE" type="DATETIME">09.01.2012 12:15:22</cell>
+                <cell name="INFO_REG_APPL_NAME" type="VARCHAR">S212RT</cell>
+                <cell name="INFO_REG_USER_NAME" type="VARCHAR"/>
+                <cell name="INFO_CHG_USER_NAME" type="VARCHAR"/>
+                <cell name="SUBSCR_TYPE_ID" type="CHAR"/>
+                <cell name="SIGNATURE_HOLDER" type="VARCHAR">Ola Nordmann</cell>
+                <cell name="DIRECTORY_NUMBER_PREFIX" type="NUMERIC">40</cell>
+            </oldValues>
+        </update>
+    </tran>
+</dbStream>

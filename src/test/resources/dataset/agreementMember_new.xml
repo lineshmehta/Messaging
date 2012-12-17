@@ -1,0 +1,25 @@
+<dbStream xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://dhttm12:8000/RepraWebApp/dtds/dbeventstream.xsd" environment="REP_connector.RepCondb">
+  <tran eventId="190:0000000863693bfe00e11f50000e00e11f5000020000a07000b5dc170000000000010003">
+    <insert schema="AGREEMENT_MEMBER_NEW"> 
+                <values>
+                  <cell name="AGREEMENT_MEMBER_ID" type="NUMERIC">666</cell>
+                  <cell name="AGREEMENT_ID" type="NUMERIC">1</cell>
+                  <cell name="PARAMETER_ID_EXTERNAL" type="NUMERIC">6164</cell>
+                  <cell name="PARAMETER_VALUE_EXTERNAL" type="VARCHAR">974761122</cell>
+                  <cell name="CUST_UNIT_NUMBER" type="INT">121212</cell>
+                  <cell name="DIRECTORY_NUMBER_ID" type="NUMERIC">97979797</cell>     
+                  <cell name="VALID_FROM_DATE" type="DATETIME">20120720 14:07:09:440</cell>
+                  <cell name="VALID_TO_DATE" type="DATETIME">20130720 14:07:09:616</cell>       
+                  <cell name="INFO_REG_DATE" type="DATETIME">20120720 14:07:09:616</cell>     
+                  <cell name="INFO_REG_APPLICATION_ID" type="SMALLINT">61</cell>
+                  <cell name="INFO_REG_USER_NAME" type="VARCHAR">tn_29700</cell>
+                  <cell name="INFO_CHG_DATE" type="DATETIME">NULL</cell>
+                  <cell name="INFO_CHG_APPLICATION_ID" type="SMALLINT">NULL</cell>
+                  <cell name="INFO_CHG_USER_NAME" type="VARCHAR">NULL</cell>
+                  <cell name="INFO_IS_DELETED" type="CHAR">N</cell>
+                  <cell name="AGREEMENT_MEMBER_ROLE" type="SMALLINT">3</cell>      
+                  <cell name="MASTER_ID" type="NUMERIC">555</cell>       
+                </values>
+   </insert>
+ </tran>
+</dbStream>

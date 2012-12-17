@@ -1,0 +1,119 @@
+buildscript {
+    repositories {
+        mavenRepo(url: 'http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/cos2-snapshots/') {
+            checkmodified = true
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+
+    dependencies {
+        classpath("com.telenor.cos:common-gradle:${commonVersion}@jar")
+                {
+
+                    changing = true
+                }
+    }
+}
+
+configurations.all {
+    resolutionStrategy.cacheDynamicVersionsFor 5, 'minutes'
+    resolutionStrategy.cacheChangingModulesFor 5, 'minutes'
+}
+
+
+ext.baseName = 'messaging'
+ext.eventsJar="messaging-events"
+ext.distName = baseName + '-distribution'
+ext.groupId = 'com.telenor.cos.messaging'
+ext.majorVersion = '4.0'
+version = majorVersion + '.' + getMinorVersion()
+ext.isBuiltLocally = !buildFromDistribution()
+ext.gitCommit = hasProperty('gitCommit') ? gitCommit : 'UNKNOWN'
+
+def String getMinorVersion() {
+    if (!hasProperty('minorVersion')) {
+        return 'SNAPSHOT';
+    } else {
+        return property('minorVersion');
+    }
+}
+
+def boolean buildFromDistribution() {
+    return hasProperty('buildFromDistribution') && property('buildFromDistribution').equals('true');
+}
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+apply plugin: 'maven'
+
+apply from: 'wsWrapperGenJaxWS.gradle'
+apply from: 'test.gradle'
+apply from: 'dependencies.gradle'
+apply from: 'common.gradle'
+apply from: 'idea.gradle'
+apply from: 'environments.gradle'
+apply from: 'artifacts.gradle'
+apply from: 'deploy.gradle'
+
+idea {
+    project {
+        jdkName = '1.6'
+        ext.downloadSources = 'true'
+    }
+}
+eclipse {
+    classpath {
+       downloadSources = 'true'
+    }
+}
+//Added To Avoid Out Of Memory Error in LocalEnvironment.
+test {
+    jvmArgs '-Xms512m', '-Xmx512m', '-XX:MaxPermSize=512m'
+}
+ext.maxParallelForks = 1
+ext.tomcatHome = System.env['TOMCAT_HOME']
+group = "com.telenor.cos"
+ext.artifactName = 'messaging'
+sourceCompatibility = 1.6
+def defaultEncoding = 'UTF-8'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDirs 'src/main/resources', 'src/main/webapp'
+        }
+    }
+
+    test {
+        java {
+            srcDir 'src/test/java'
+            srcDir "$buildDir/src.wsWrapperGen/java"
+        }
+        resources {
+            srcDirs 'src/test/resources', "$buildDir/src.sqlWrapperGen/java", 'src/test/wsdl'
+        }
+    }
+}
+
+task cleanStoredActiveMqData(type: Delete) {
+    delete "$projectDir/activemq-data"
+}
+
+clean.dependsOn cleanStoredActiveMqData
+
+
+compileJava {
+    options.compilerArgs << "-Xlint:all -Xlint:-serial"
+    options.compilerArgs << "-Werror"
+    options.encoding = defaultEncoding
+}
