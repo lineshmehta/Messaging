@@ -4,3 +4,40 @@
 *.jar
 *.war
 *.ear
+
+#eclipse
+.classpath
+.project
+.settings
+.checkstyle
+
+#gradle
+.gradle
+.cosgradle
+
+#idea
+*.iml
+*.ipr
+*.iws
+
+#tmp files
+*~
+null/
+*.ser
+
+#backup files
+*.bak
+
+#log files
+*.log
+*.log.*
+
+#Ignore build directories. Huba
+out/
+build/
+target/
+activemq-data/
+
+#Ignore tmp directories
+tmp/
+bin/

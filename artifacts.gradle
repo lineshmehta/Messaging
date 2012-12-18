@@ -158,7 +158,7 @@ artifacts {
 uploadMessagingEvents {
     repositories.mavenDeployer {
 
-        repository(url: "http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/cos2-snapshots/") {
+        repository(url: "http://lintel.artifactoryonline.com/lintel/plugins-snapshots-local/") {
             authentication(userName: "bamboo", password: "bamboo123")
         }
 

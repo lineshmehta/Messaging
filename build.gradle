@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        mavenRepo(url: 'http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/cos2-snapshots/') {
+        mavenRepo(url: 'http://lintel.artifactoryonline.com/lintel/plugins-snapshots-local/') {
             checkmodified = true
         }
     }
