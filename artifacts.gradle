@@ -7,8 +7,8 @@ configurations {
 }
 
 repositories {
-    mavenRepo url: 'http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/cos2-releases/'
-    mavenRepo url: 'http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/thirdparty'
+    mavenRepo url: 'http://http://lintel.artifactoryonline.com/nexus/content/repositories/cos2-releases/'
+    mavenRepo url: 'http://http://lintel.artifactoryonline.com/nexus/content/repositories/thirdparty'
 }
 
 
@@ -184,7 +184,7 @@ uploadMessagingEvents {
 uploadMessaging {
     repositories.mavenDeployer {
 
-        repository(url: "http://tns-sko-371-011.corp.telenor.no:8081/nexus/content/repositories/cos2-releases/") {
+        repository(url: "http://http://lintel.artifactoryonline.com/nexus/content/repositories/cos2-releases/") {
             authentication(userName: "bamboo", password: "bamboo123")
         }
 
