@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        mavenRepo(url: 'http://lintel.artifactoryonline.com/lintel/plugins-snapshots-local/') {
+        mavenRepo(url: 'http://lintel.artifactoryonline.com/lintel/libs-snapshots-local/') {
             checkmodified = true
         }
     }

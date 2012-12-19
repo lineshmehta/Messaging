@@ -7,7 +7,7 @@ configurations {
 }
 
 repositories {
-    mavenRepo url: 'http://http://lintel.artifactoryonline.com/nexus/content/repositories/cos2-releases/'
+    mavenRepo url: 'hhttp://lintel.artifactoryonline.com/lintel/libs-snapshots-local/'
     mavenRepo url: 'http://http://lintel.artifactoryonline.com/nexus/content/repositories/thirdparty'
 }
 
